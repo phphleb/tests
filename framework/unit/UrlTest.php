@@ -11,7 +11,7 @@ if(file_exists(HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Url.php")) {
 } else {
     require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/URL.php";
 }
-require_once HLEB_FRAMEWORK_DIR . "Main/Functions.php";
+//require_once HLEB_FRAMEWORK_DIR . "Main/Functions.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Key.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/ProtectedCSRF.php";
 
