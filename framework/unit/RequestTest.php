@@ -138,7 +138,7 @@ class RequestTest extends TestCase
     // Проверка на получение полного адреса домена
     public function testGetFullUrl()
     {
-        $this->assertTrue( self::mainTestData("getFullUrl", "") === "https://test.site" );
+        $this->assertTrue( self::mainTestData("getFullUrl", "") === "https://test.site/index.html" );
     }
 
     // Проверка на получение полного адреса домена
@@ -181,7 +181,6 @@ class RequestTest extends TestCase
     {
         $command = "php " . self::FILENAME . " " . $method . " " . $param ;
         $result = exec($command);
-        //var_dump($result);
         return $result;
     }
 
