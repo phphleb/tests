@@ -1,0 +1,1 @@
+<?php if(isset($param)) print $param;
