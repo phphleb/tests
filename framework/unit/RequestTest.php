@@ -24,9 +24,9 @@ class RequestTest extends TestCase
     const NEW_COOKIE = ["C1" => "101", "C2" => "201", "C3" => "301"];
     const START_SESSION = ["S1" => "1100", "S2" => "1200"];
     const NEW_SESSION = ["S1" => "1101", "S2" => "1201", "S3" => "1301"];
-    const GET = ["GET1"=>"GET100", "GET2"=>"<script>alert('H');</script>GET200"];
-    const POST = ["POST1"=>"POST100", "POST2"=>"<script>alert('H');</script>POST200"];
-    const REQUEST = ["REQUEST1" => "REQUEST100", "REQUEST2" => "<script>alert('H');</script>REQUEST200"];
+    const GET = ["GET1"=>"GET100", "GET2"=>"<script>alert('H');</script>GET200", "GET3" => 8888, "GET4" => 88.88, "GET5" => -8888];
+    const POST = ["POST1"=>"POST100", "POST2"=>"<script>alert('H');</script>POST200", "POST3"=> 9999, "POST4"=> 99.99, "POST5"=> -9999];
+    const REQUEST = ["REQUEST1" => "REQUEST100", "REQUEST2" => "<script>alert('H');</script>REQUEST200", "REQUEST3" => 10001, "REQUEST4" => 1000.1, "REQUEST5" => -10001];
 
 
     // Проверка, правильно ли заносятся значения
@@ -176,6 +176,73 @@ class RequestTest extends TestCase
     {
         $this->assertTrue( self::mainTestData("returnPrivateTags", "\"&lt;script&gt;1000&lt;/script&gt;\"") === "<script>1000</script>" );
     }
+
+    // Проверка на получение строки
+    public function testGetGetString()
+    {
+        $this->assertTrue( self::mainTestData("getGetString", "GET1") === self::GET["GET1"] );
+    }
+
+    // Проверка на получение строкового числа
+    public function testGetGetStringOnNumber()
+    {
+        $this->assertTrue( self::mainTestData("getGetString", "GET4") === strval(self::GET["GET4"]) );
+    }
+
+    // Проверка на получение целого числа из числового значения
+    public function testGetGetIntToIntegerValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetInt", "GET3") === strval(self::GET["GET3"]) );
+    }
+
+    // Проверка на получение целого числа из нечислового значения
+    public function testGetGetIntoNonIntegerValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetInt", "GET1") === "0" );
+    }
+
+    // Проверка на получение целого числа из дробного значения
+    public function testGetGetIntoIntegerValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetInt", "GET4") === strval(intval(self::GET["GET4"])) );
+    }
+
+    // Проверка на получение дробного числа из нечислового значения
+    public function testGetFloatIntoNonIntegerValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetFloat", "GET1") === "0" );
+    }
+
+    // Проверка на получение отрицательного дробного числа из отрицательного дробного значения
+    public function testGetFloatIntoNonFloatedValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetFloat", "GET5") === strval(self::GET["GET5"]) );
+    }
+
+    // Проверка на получение дробного числа из строкового значения
+    public function testGetFloatIntoStringValue()
+    {
+        $this->assertTrue( self::mainTestData("getGetFloat", "GET1") === "0" );
+    }
+
+    // Проверка на получение POST-значения
+    public function testGetPostIntIntoStringValue()
+    {
+        $this->assertTrue( self::mainTestData("getPostInt", "POST3") === strval(self::POST["POST3"]) );
+    }
+
+    // Проверка на получение POST-значения из отрицательного числа
+    public function testGetPostIntIntoIntValue()
+    {
+        $this->assertTrue( self::mainTestData("getPostInt", "POST5") === strval(intval(self::POST["POST5"])) );
+    }
+
+    // Проверка на получение REQUEST-значения
+    public function testGetRequestIntIntoStringValue()
+    {
+        $this->assertTrue( self::mainTestData("getRequestInt", "REQUEST3") === strval(self::REQUEST["REQUEST3"]) );
+    }
+
 
     private function mainTestData($method, $param)
     {

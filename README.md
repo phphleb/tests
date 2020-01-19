@@ -8,30 +8,30 @@ Tests for PHP Micro-Framework HLEB
 
 Update framework
 
-```html
+```bash
 $ composer require phphleb/framework 1.3.2
 ```
 
 Install PHPUnit
 
-```html
+```bash
 $ composer require phpunit/phpunit 8.0.0
 ```
 
 Install tests
 
-```html
+```bash
 $ composer require phphleb/tests 1.3.2
 ```
 
 Running tests from the project directory
 
-```html
+```bash
 $ vendor/bin/phpunit vendor/phphleb/tests/
 ```
 
 Running tests from the project directory (Windows)
 
-```html
+```bash
 $ vendor\bin\phpunit vendor/phphleb/tests/
 ```

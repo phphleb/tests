@@ -16,9 +16,9 @@ define('HLEB_PROJECT_PROTOCOL', 'https://');
 define("HLEB_MAIN_DOMAIN", "test.site");
 $_COOKIE = START_COOKIE;
 $_SESSION = START_SESSION;
-$_GET = ["GET1" => "GET100", "GET2" => "<script>alert('H');</script>GET200"];
-$_POST = ["POST1" => "POST100", "POST2" => "<script>alert('H');</script>POST200"];
-$_REQUEST = ["REQUEST1" => "REQUEST100", "REQUEST2" => "<script>alert('H');</script>REQUEST200"];
+$_GET = ["GET1" => "GET100", "GET2" => "<script>alert('H');</script>GET200", "GET3" => 8888, "GET4" => 88.88, "GET5" => -8888];
+$_POST = ["POST1" => "POST100", "POST2" => "<script>alert('H');</script>POST200", "POST3"=> 9999, "POST4"=> 99.99, "POST5"=> -9999];
+$_REQUEST = ["REQUEST1" => "REQUEST100", "REQUEST2" => "<script>alert('H');</script>REQUEST200", "REQUEST3" => 10001, "REQUEST4" => 1000.1, "REQUEST5" => -10001];
 
 $_SERVER['HTTP_HOST'] = "localhost:8080";
 $_SERVER['X_REQUESTED_WITH'] = 'XMLHttpRequest';
