@@ -1,17 +1,25 @@
 {
-    "name": "phphleb/tests",
-    "description": "PHPUnit tests from Micro-Framework HLEB 1.2.4",
-    "type": "library",
-    "keywords": [
-      "framework",
-      "tests"
-    ],
-      "require": {
-        "php": "^7.2.0",
-        "phphleb/framework": "1.3.*",
-        "phpunit/phpunit": "8.0.0"
-    },
-    "config": {
-      "optimize-autoloader": true
+  "name": "phphleb/tests",
+  "description": "PHPUnit tests from Micro-Framework HLEB",
+  "type": "library",
+  "keywords": [
+    "framework",
+    "tests"
+  ],
+  "homepage": "https://phphleb.ru",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Foma Tuturov",
+      "email": "fomiash@yandex.ru"
     }
+  ],
+  "require": {
+    "php": "^7.2.0",
+    "phphleb/framework": "1.3.*",
+    "phpunit/phpunit": "8.0.0"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
 }
