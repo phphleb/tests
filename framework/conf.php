@@ -17,5 +17,7 @@ define('HLEB_FRAMEWORK_DIR', HLEB_PROJECT_DIRECTORY. "/");
 define("HL_FRAMEWORK_UNIT_TESTS_DIR", HL_FRAMEWORK_TESTS_DIR . "/unit/");
 define("HL_RESOURCES_DIR", HL_FRAMEWORK_TESTS_DIR . "/resources/");
 
+error_reporting(E_ALL);
+
 
 
