@@ -35,11 +35,17 @@ class ConsoleTest extends TestCase
 
     public function testVersion()
     {
+        if(!file_exists(HLEB_GLOBAL_DIRECTORY . DIRECTORY_SEPARATOR . HLEB_PUBLIC_DIR)){
+           error_log("\n" . "*** If the project’s public directory has changed, specify the path to /console in HLEB_PUBLIC_DIR" . "\n");
+        }
         $this->assertTrue(self::mainTestData("-v") === "OK");
     }
 
     public function testVersion2()
     {
+        if(!file_exists(HLEB_GLOBAL_DIRECTORY . DIRECTORY_SEPARATOR . HLEB_PUBLIC_DIR)){
+            error_log("\n" . "*** If the project’s public directory has changed, specify the path to /console in HLEB_PUBLIC_DIR" . "\n");
+        }
         $this->assertTrue(self::mainTestData("--version") === "OK");
     }
 
