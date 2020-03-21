@@ -34,15 +34,15 @@ class VCreatorTest extends TestCase
     private function mainTestData()
     {
         ob_start();
-        $this->mainTestGetObj()->view(self::INCLUDE_FILE);
+        $this->mainTestGetObj(self::INCLUDE_FILE)->view();
         $out = ob_get_contents();
         ob_end_clean();
         return $out;
     }
 
-    private function mainTestGetObj()
+    private function mainTestGetObj($include)
     {
-        return (new Hleb\Constructor\VCreator());
+        return (new Hleb\Constructor\VCreator($include));
     }
 
 
