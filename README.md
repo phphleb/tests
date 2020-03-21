@@ -21,7 +21,7 @@ $ composer require phpunit/phpunit 8.0.0
 Install tests
 
 ```bash
-$ composer require phphleb/tests 1.5.0
+$ composer require phphleb/tests 1.5.1
 ```
 
 Running tests from the project directory
