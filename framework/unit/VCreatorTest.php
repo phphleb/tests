@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class VCreatorTest extends TestCase
 {
     CONST INCLUDE_FILE = HL_RESOURCES_DIR . "data_in_params01.php";
-    
+
     // Есть ли файл - заглушка
     public function testResource()
     {
@@ -25,7 +25,7 @@ class VCreatorTest extends TestCase
         $this->assertEquals(file_get_contents(self::INCLUDE_FILE, true), '<?php if(isset($param)) print $param;' );
     }
 
-     // Работает ли (вывод параметров)
+    // Работает ли (вывод параметров)
     public function testParamsReturn()
     {
         $this->assertTrue($this->mainTestData() === "100");
@@ -34,15 +34,15 @@ class VCreatorTest extends TestCase
     private function mainTestData()
     {
         ob_start();
-        $this->mainTestGetObj(self::INCLUDE_FILE)->view();
+        $this->mainTestGetObj()->view(self::INCLUDE_FILE);
         $out = ob_get_contents();
         ob_end_clean();
         return $out;
     }
 
-    private function mainTestGetObj($content)
+    private function mainTestGetObj()
     {
-        return (new Hleb\Constructor\VCreator($content));
+        return (new Hleb\Constructor\VCreator());
     }
 
 
