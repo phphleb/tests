@@ -61,7 +61,7 @@ function hleb_v10s20hdp8nm7c_render($render, $data = null)
 
 $opt = (new Hleb\Constructor\Routes\LoadRoutes());
 
-$routes_array = $opt->load_cache() ?? [];
+$routes_array = $opt->loadCache() ?? [];
 
 $block = (new Hleb\Constructor\Handlers\URLHandler())->page($routes_array);
 

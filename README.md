@@ -4,12 +4,12 @@ Tests for PHP Micro-Framework HLEB
  If you need to install the framework, use the link: [github.com/phphleb/hleb](https://github.com/phphleb/hleb) 
  
  
- #### Unit tests (PHPUnit 8.0.0) from the phphleb/framework v.1.5.1
+ #### Unit tests (PHPUnit 8.0.0) from the phphleb/framework v.1.5.2
 
 Update framework
 
 ```bash
-$ composer require phphleb/framework 1.5.1
+$ composer require phphleb/framework 1.5.2
 ```
 
 Install PHPUnit
@@ -21,7 +21,7 @@ $ composer require phpunit/phpunit 8.0.0
 Install tests
 
 ```bash
-$ composer require phphleb/tests 1.5.1
+$ composer require phphleb/tests 1.5.2
 ```
 
 Running tests from the project directory

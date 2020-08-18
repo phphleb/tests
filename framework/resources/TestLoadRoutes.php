@@ -28,7 +28,7 @@ class LoadRoutes
     }
 
 
-    public function load_cache()
+    public function loadCache()
     {
 
         $content = file_get_contents($this->cache_routes);

@@ -21,6 +21,6 @@ $data = [
 ];
 // Проверка редиректа
 $address_obj = new \Hleb\Constructor\Handlers\AddressBar($data);
-$address_obj->get_state();
+$address_obj->get();
 print $address_obj->redirect;
 

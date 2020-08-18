@@ -20,5 +20,5 @@ $data = [
     "HLEB_PROJECT_VALIDITY_URL" => urldecode($argv[8])
 ];
 
-print (new \Hleb\Constructor\Handlers\AddressBar($data))->get_state();
+print (new \Hleb\Constructor\Handlers\AddressBar($data))->get();
 
