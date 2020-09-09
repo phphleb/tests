@@ -27,7 +27,6 @@ class AddressBarTest extends TestCase
     CONST INCLUDE_EXEC_FILE = HL_RESOURCES_DIR . "exc_run_script.url_test_address_bar.php";
     CONST INCLUDE_EXEC_FILE2 = HL_RESOURCES_DIR . "exc_run_script.url_test_address_bar2.php";
 
-
     // Проверка, что работает
     public function testWorkingBar()
     {
@@ -121,7 +120,7 @@ class AddressBarTest extends TestCase
         $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
         $this->assertTrue('https://site.com/test/' == $value);
     }
-    
+
     // Проверка, что НЕ редиректит с HLEB_PROJECT_GLUE_WITH_WWW = 0
     public function testBarParams10()
     {
@@ -130,7 +129,7 @@ class AddressBarTest extends TestCase
         $origin_data["SERVER"]['HTTP_HOST'] = "site.com";
         $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
         $this->assertTrue('https://site.com/test/' == $value);
-    }    
+    }
 
     // Проверка, что редиректит с HLEB_PROJECT_GLUE_WITH_WWW = 1
     public function testBarParams11()
@@ -152,9 +151,35 @@ class AddressBarTest extends TestCase
         $this->assertTrue('https://www.site.com/test/' == $value);
     }
 
+    // Проверка, что работает с доменом на кириллице
+    public function testDomainCirillic1()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://сайт.рф/test/" == $value);
+    }
 
+    // Проверка, что работает с ЧПУ на кириллице
+    public function testDomainCirillic2()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $origin_data["SERVER"]['REQUEST_URI'] = "/тест/";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://сайт.рф/тест/" == $value);
+    }
 
-
+    // Проверка, что НЕ работает с ЧПУ на кириллице с ограничением
+    public function testDomainCirillic3()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $origin_data['HLEB_PROJECT_VALIDITY_URL'] = '/^[a-z\/\.]+$/';
+        $origin_data["SERVER"]['REQUEST_URI'] = "/тест/";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE2,  $origin_data);
+        $this->assertTrue("https://сайт.рф" == $value);
+    }
 
     private function mainTestGetData(string $filename, array $data)
     {
