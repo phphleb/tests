@@ -152,7 +152,7 @@ class AddressBarTest extends TestCase
     }
 
     // Проверка, что работает с доменом на кириллице
-    public function testDomainCirillic1()
+    public function testDomainKirillic1()
     {
         $origin_data = self::DEFAULT_DATA;
         $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
@@ -161,7 +161,7 @@ class AddressBarTest extends TestCase
     }
 
     // Проверка, что работает с ЧПУ на кириллице
-    public function testDomainCirillic2()
+    public function testDomainKirillic2()
     {
         $origin_data = self::DEFAULT_DATA;
         $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
@@ -171,7 +171,7 @@ class AddressBarTest extends TestCase
     }
 
     // Проверка, что НЕ работает с ЧПУ на кириллице с ограничением
-    public function testDomainCirillic3()
+    public function testDomainKirillic3()
     {
         $origin_data = self::DEFAULT_DATA;
         $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
@@ -181,9 +181,18 @@ class AddressBarTest extends TestCase
         $this->assertTrue("https://сайт.рф" == $value);
     }
 
+    // Проверка, что названия GET параметров могут быть числовыми
+    public function testNumericGetParams()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $val = 12345678;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test/?$val";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test/?$val" == $value);
+    }
+
     private function mainTestGetData(string $filename, array $data)
     {
-
         $command = "php " . $filename . " " .
             $data["SERVER"]['REQUEST_URI'] . " " .
             $data["SERVER"]['HTTP_HOST'] . " " .
