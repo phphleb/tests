@@ -191,6 +191,79 @@ class AddressBarTest extends TestCase
         $this->assertTrue("https://site.ru/test/?$val" == $value);
     }
 
+    // Проверка, что работает для генерируемого файла без слеш с включенным окончанием
+    public function testBarParamsFromFile1()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = true;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test.jpg";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test.jpg" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла без слеш с выключенным окончанием
+    public function testBarParamsFromFile2()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = false;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test.jpg";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test.jpg" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла cо слеш с выключенным окончанием
+    public function testBarParamsFromFile3()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = false;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test.jpg/";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test.jpg" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла cо слеш с включенным окончанием
+    public function testBarParamsFromFile4()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = true;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test.jpg/";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test.jpg/" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла кириллической строки без слеш с выключенным окончанием
+    public function testBarParamsFromFile5()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = false;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $origin_data["SERVER"]['REQUEST_URI'] = "/тест.jpg";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://сайт.рф/тест.jpg" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла кириллической строки без слеш с включенным окончанием
+    public function testBarParamsFromFile6()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = true;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $origin_data["SERVER"]['REQUEST_URI'] = "/тест.jpg";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://сайт.рф/тест.jpg" == $value);
+    }
+
+    // Проверка, что работает для генерируемого файла кириллической строки без слеш с выключенным окончанием
+    public function testBarParamsFromFile7()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = false;
+        $origin_data["SERVER"]['HTTP_HOST'] = "xn--80aswg.xn--p1ai";
+        $origin_data["SERVER"]['REQUEST_URI'] = "/тест.тест/";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://сайт.рф/тест.тест" == $value);
+    }
+
     private function mainTestGetData(string $filename, array $data)
     {
         $command = "php " . $filename . " " .
