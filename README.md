@@ -15,7 +15,7 @@ $ composer require phphleb/framework 1.5.40
 Install PHPUnit
 
 ```bash
-$ composer require phpunit/phpunit 8.0.0
+$ composer require phpunit/phpunit ^9.0.0
 ```
 
 Install tests
