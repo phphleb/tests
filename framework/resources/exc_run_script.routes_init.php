@@ -29,6 +29,8 @@ $REQUEST_METHOD  = $argv[2] ?? 'GET';
 
 $SECURITY_TOKEN  = $argv[3] ?? '';
 
+$HTTP_X_FORWARDED_HOST  = $argv[4] ?? 'site.com';
+
 define('HLEB_START', microtime(true));
 define('HL_TWIG_CONNECTED', false);
 define('HLEB_PROJECT_DEBUG', false);
@@ -43,9 +45,37 @@ if(!empty($SECURITY_TOKEN)) {
     $_REQUEST['_token'] =  md5(session_id() . $SECURITY_TOKEN);
 }
 
-    function hleb_to0me1cd6vo7gd_data()
+$_SERVER['HTTP_X_FORWARDED_HOST'] =  $HTTP_X_FORWARDED_HOST;
+
+function hleb_to0me1cd6vo7gd_data()
 {
     return \Hleb\Constructor\Routes\Data::return_data();
+}
+
+function hleb_get_host() {
+
+    // Symfony origin function
+    $possibleHostSources = array('HTTP_X_FORWARDED_HOST', 'HTTP_HOST', 'SERVER_NAME', 'SERVER_ADDR');
+    $sourceTransformations = array(
+        "HTTP_X_FORWARDED_HOST" => function ($value) {
+            $elements = explode(',', $value);
+            return trim(end($elements));
+        }
+    );
+    $host = '';
+    foreach ($possibleHostSources as $key => $source) {
+        if (!empty($host)) break;
+        if (empty($_SERVER[$source])) continue;
+        $host = $_SERVER[$source];
+        if (array_key_exists($source, $sourceTransformations)) {
+            $host = $sourceTransformations[$source]($host);
+        }
+    }
+
+    // Remove port number from host
+    $host = preg_replace('/:\d+$/', '', $host);
+
+    return trim($host);
 }
 
 function hleb_v10s20hdp8nm7c_render($render, $data = null)

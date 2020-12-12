@@ -55,6 +55,17 @@ class RoutesTest extends TestCase
         38 => ["/test-14/2/", "TEST-GET-PROTECT-2"],
         39 => ["/test-14/3/", "Protected from CSRF"],
         40 => ["/test-14/3/", "TEST-GET-PROTECT-3"],
+        41 => ["/test-subdomains/default/", "TEST-SUBDOMAIN-DEFAULT"],
+        42 => ["/test-subdomains/default/", "TEST-SUBDOMAIN-DEV-1"],
+        43 => ["/test-subdomains/2/", "TEST-SUBDOMAIN-DEV-2"],
+        44 => ["/test-subdomains/3/", "TEST-SUBDOMAIN-DEV-3"],
+        45 => ["/test-subdomains/4/", "TEST-SUBDOMAIN-DEV-4"],
+        46 => ["/test-subdomains/5/", "TEST-SUBDOMAIN-DEV-5"],
+        47 => ["/test-subdomains/6/", "TEST-SUBDOMAIN-DEV-6"],
+        48 => ["/test-subdomains/7/", "TEST-SUBDOMAIN-DEV-7"],
+        49 => ["/test-subdomains/8/", "TEST-SUBDOMAIN-DEV-8"],
+        50 => ["/test-subdomains/9/", "TEST-SUBDOMAIN-DEV-9"],
+        51 => ["/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10"],
     ];
 
 
@@ -322,9 +333,120 @@ class RoutesTest extends TestCase
         $this->assertTrue(self::mainTestData(self::ACTIONS[40][0], "GET", self::KEY) === self::ACTIONS[40][1]);
     }
 
-    private function mainTestData($route = null, $method = null, $key = null)
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain0()
     {
-        $command = "php " . self::FILENAME . " " . $route . " " . $method . " " . $key;
+        $this->assertTrue(self::mainTestData(self::ACTIONS[41][0], "GET", self::KEY, "site.com") === self::ACTIONS[41][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...) c субдоменом dev
+    public function testDomain1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[42][0], "GET", self::KEY, "dev.site.com") === self::ACTIONS[42][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...) c субдоменом dev1
+    public function testDomain2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[43][0], "GET", self::KEY, "dev1.site.com") === self::ACTIONS[43][1]);
+    }
+
+    // Пороверка от противного работоспособности метода ->domain(...) c субдоменом dev1
+    public function testDomain3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[43][0], "GET", self::KEY, "variable.dev1.site.com") === self::ACTIONS[43][1]);
+    }
+
+    // Пороверка от противного работоспособности метода ->domain(...) c субдоменом dev1
+    public function testDomain4()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[45][0], "GET", self::KEY, "sub4.sub3.site.com") === self::ACTIONS[45][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain5()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "var1.site.com") === self::ACTIONS[46][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain6()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "site.com") === self::ACTIONS[46][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain7()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "variable.var1.site.com") === self::ACTIONS[46][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain8()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "variable.var2.site.com") === self::ACTIONS[46][1]);
+    }
+
+    // Пороверка от противного работоспособности метода ->domain(...)
+    public function testDomain9()
+    {
+        $this->assertFalse(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "var2.variable.site.com") === self::ACTIONS[46][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain10()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[47][0], "GET", self::KEY, "site.com") === self::ACTIONS[47][1]);
+    }
+
+    // Пороверка от противного работоспособности метода ->domain(...)
+    public function testDomain11()
+    {
+        $this->assertFalse(self::mainTestData(self::ACTIONS[47][0], "GET", self::KEY, "subdomain.site.com") === self::ACTIONS[47][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain12()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd2.site.com") === self::ACTIONS[48][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain13()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[49][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[49][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain14()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd1.site.com") === self::ACTIONS[48][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain15()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[50][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[50][1]);
+    }
+
+    // Пороверка работоспособности метода ->domain(...)
+    public function testDomain16()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.variable.site.com") === self::ACTIONS[51][1]);
+    }
+
+    // Пороверка от противного работоспособности метода ->domain(...)
+    public function testDomain17()
+    {
+        $this->assertFalse(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.site.com") === self::ACTIONS[51][1]);
+    }
+
+    private function mainTestData($route = null, $method = null, $key = null, $domain = null)
+    {
+        if(!empty($domain) && empty($key)) {
+            $key = '0';
+        }
+        $command = "php " . self::FILENAME . " " . $route . " " . $method . " " . $key . " " . $domain;
         $result = exec($command);
         //var_dump($result);
         return $result;

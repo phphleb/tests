@@ -22,11 +22,11 @@ Route::type("post")->get("/test-8/", "TEST-MAIN-TYPE-POST");
 
 Route::getType('post');
 
-  Route::get("/test-9/1/", "TEST-GET-TYPE-POST-1"); // POST
+Route::get("/test-9/1/", "TEST-GET-TYPE-POST-1"); // POST
 
-  Route::type('get')->get("/test-9/2/", "TEST-GET-TYPE-POST-2"); // GET
+Route::type('get')->get("/test-9/2/", "TEST-GET-TYPE-POST-2"); // GET
 
-  Route::get("/test-9/3/", "TEST-GET-TYPE-POST-3"); // POST
+Route::get("/test-9/3/", "TEST-GET-TYPE-POST-3"); // POST
 
 Route::endType();
 
@@ -34,23 +34,23 @@ Route::type('post')->type('get')->get("/test-9/4/", "TEST-GET-TYPE-POST-4"); // 
 
 Route::prefix("/test-10-prefix/")->getGroup(); // Начало группы
 
-   Route::get("/test-10/1/", "TEST-MAIN-GROUP-1");
+Route::get("/test-10/1/", "TEST-MAIN-GROUP-1");
 
-   Route::get("/test-10/2/", "TEST-MAIN-GROUP-2");
+Route::get("/test-10/2/", "TEST-MAIN-GROUP-2");
 
 Route::endGroup(); // Завершение группы
 
 Route::prefix("/test-11-prefix/")->getGroup(); // Начало группы 1
 
-  Route::prefix("/test-11-prefix-2/")->getGroup(); // Начало группы 2
+Route::prefix("/test-11-prefix-2/")->getGroup(); // Начало группы 2
 
-    Route::get("/test-11-group/1/", "TEST-IN-GROUP-1");
+Route::get("/test-11-group/1/", "TEST-IN-GROUP-1");
 
-    Route::get("/test-11-group/2/", "TEST-IN-GROUP-2");
+Route::get("/test-11-group/2/", "TEST-IN-GROUP-2");
 
-  Route::endGroup(); // Завершение группы 2
+Route::endGroup(); // Завершение группы 2
 
-    Route::get("/test-11-group/3/", "TEST-IN-GROUP-3");
+Route::get("/test-11-group/3/", "TEST-IN-GROUP-3");
 
 Route::endGroup(); // Завершение группы 1
 
@@ -61,13 +61,13 @@ Route::prefix('/test-12-2/');
 
 Route::getGroup(); // Начало группы 2
 
-  Route::get('/a3/', "TEST-NAMED-GROUP-1" ); // "/test-12-1/test-12-2/a3/"
+Route::get('/a3/', "TEST-NAMED-GROUP-1" ); // "/test-12-1/test-12-2/a3/"
 
-  Route::get('/b3/', "TEST-NAMED-GROUP-2" ); // "/test-12-1/test-12-2/b3/"
+Route::get('/b3/', "TEST-NAMED-GROUP-2" ); // "/test-12-1/test-12-2/b3/"
 
 Route::endGroup('Group 1'); // Завершение группы "Group 1"
 
-  Route::get( '/test-12-3/', "TEST-NAMED-GROUP-3"); // "/test-12-2/test-12-3/"
+Route::get( '/test-12-3/', "TEST-NAMED-GROUP-3"); // "/test-12-2/test-12-3/"
 
 Route::endGroup(); // Завершение группы 2
 
@@ -75,12 +75,42 @@ Route::protect()->get('/test-13-pro/', 'TEST-PROTECTED-1');
 
 Route::getProtect();
 
-  Route::get('/test-14/1/', "TEST-GET-PROTECT-1"); // Защищён
+Route::get('/test-14/1/', "TEST-GET-PROTECT-1"); // Защищён
 
-  Route::protect('None')->get('/test-14/2/', "TEST-GET-PROTECT-2"); // Не защищён
+Route::protect('None')->get('/test-14/2/', "TEST-GET-PROTECT-2"); // Не защищён
 
-  Route::get('/test-14/3/', "TEST-GET-PROTECT-3"); // Защищён
+Route::get('/test-14/3/', "TEST-GET-PROTECT-3"); // Защищён
 
 Route::endProtect();
 
+// Работа с поддоменами
+Route::prefix("/test-subdomains/")->getGroup();
+
+Route::domain(null)->get( '/default/', "TEST-SUBDOMAIN-DEFAULT");
+
+Route::domain("dev")->get( '/default/', "TEST-SUBDOMAIN-DEV-1");
+
+Route::endGroup();
+
+Route::domain("dev1")->getGroup();
+
+Route::get("/test-subdomains/2/", "TEST-SUBDOMAIN-DEV-2" ); // dev1.site.com/test-subdomains/2/ или *.dev1.site.com/test-subdomains/2/
+
+Route::endGroup();
+
+Route::get("/test-subdomains/2/", "TEST-SUBDOMAIN-DEV-3"); // все запросы (site.com/test-subdomains/2/ или *.site.com/test-subdomains/2/)
+
+Route::domain("sub4", 4)->domain("sub3")->get("/test-subdomains/4/", "TEST-SUBDOMAIN-DEV-4"); // sub4.sub3.site.com или *.sub4.sub3.site.com
+
+Route::domain(["var1", "var2", null])->get("/test-subdomains/5/", "TEST-SUBDOMAIN-DEV-5");
+
+Route::domain(null)->get("/test-subdomains/6/", "TEST-SUBDOMAIN-DEV-6");
+
+Route::domain("subd1")->domain("subd2")->get("/test-subdomains/7/", "TEST-SUBDOMAIN-DEV-7");
+
+Route::domain("subd3")->domain("*")->get("/test-subdomains/8/", "TEST-SUBDOMAIN-DEV-8");
+
+Route::domain("subd3")->get("/test-subdomains/9/", "TEST-SUBDOMAIN-DEV-9");
+
+Route::domain("subd4", 4)->get("/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10");
 
