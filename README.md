@@ -27,7 +27,7 @@ $ composer require phphleb/tests 1.5.41
 Running tests from the project directory
 
 ```bash
-$ vendor/bin/phpunit vendor/phphleb/tests/
+$ sudo vendor/bin/phpunit vendor/phphleb/tests/
 ```
 
 Running tests from the project directory (Windows)
