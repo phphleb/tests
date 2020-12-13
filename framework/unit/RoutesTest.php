@@ -408,19 +408,19 @@ class RoutesTest extends TestCase
     // Пороверка работоспособности метода ->domain(...)
     public function testDomain12()
     {
-        $this->assertTrue(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd2.site.com") === self::ACTIONS[48][1]);
+        $this->assertFalse(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd2.site.com") === self::ACTIONS[48][1]);
     }
 
     // Пороверка работоспособности метода ->domain(...)
     public function testDomain13()
     {
-        $this->assertTrue(self::mainTestData(self::ACTIONS[49][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[49][1]);
+        $this->assertFalse(self::mainTestData(self::ACTIONS[49][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[49][1]);
     }
 
     // Пороверка работоспособности метода ->domain(...)
     public function testDomain14()
     {
-        $this->assertTrue(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd1.site.com") === self::ACTIONS[48][1]);
+        $this->assertFalse(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd1.site.com") === self::ACTIONS[48][1]);
     }
 
     // Пороверка работоспособности метода ->domain(...)
