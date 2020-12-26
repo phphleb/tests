@@ -19,5 +19,10 @@ define("HL_RESOURCES_DIR", HL_FRAMEWORK_TESTS_DIR . "/resources/");
 
 error_reporting(E_ALL);
 
+if (!function_exists('hl_preliminary_exit')) {
+    function hl_preliminary_exit($text = '') {
+        exit($text);
+    }
+}
 
 
