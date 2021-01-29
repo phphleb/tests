@@ -4,7 +4,7 @@
 
 require_once __DIR__ . "/../conf.php";
 
-require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
+require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
 require_once HLEB_FRAMEWORK_DIR . "Scheme/Home/Constructor/Handlers/RequestInterface.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Request.php";
 
