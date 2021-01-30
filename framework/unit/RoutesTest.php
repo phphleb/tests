@@ -5,6 +5,7 @@
 require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
+require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
 
 use PHPUnit\Framework\TestCase;
 

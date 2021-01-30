@@ -5,6 +5,7 @@
 require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
+require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
 require_once HLEB_FRAMEWORK_DIR . "Main/Errors/ErrorOutput.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Key.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/ProtectedCSRF.php";
