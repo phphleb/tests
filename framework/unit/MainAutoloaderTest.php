@@ -5,7 +5,6 @@
 require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
-require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
 require_once HLEB_FRAMEWORK_DIR . "Scheme/Home/Main/Connector.php";//
 require_once HLEB_GLOBAL_DIRECTORY . "/app/Optional/MainConnector.php";
 require_once HLEB_FRAMEWORK_DIR . "/Main/HomeConnector.php";

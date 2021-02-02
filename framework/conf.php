@@ -25,4 +25,6 @@ if (!function_exists('hl_preliminary_exit')) {
     }
 }
 
+require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
+
 

@@ -5,7 +5,7 @@
 require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
-require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
+
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/LoadRoutes.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/URLHandler.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Request.php";
@@ -15,7 +15,23 @@ require_once HLEB_FRAMEWORK_DIR . "Constructor/Workspace.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/VCreator.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
 
+require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
+
+require_once HLEB_FRAMEWORK_DIR . "Scheme/App/Controllers/MainController.php";
+
+require_once HLEB_FRAMEWORK_DIR . "Scheme/App/Middleware/MainMiddleware.php";
+
 require_once HLEB_FRAMEWORK_DIR . "Main/TryClass.php";
+
+require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474eff721eee4c33056ab6a4c91b522bNum1Controller.php';
+
+require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test6032ca1ff49c11e8a7a2b17afed6858bMiddlewareBefore.php';
+
+require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Testa30535006038eac8c105b34b05112ca9Num1MiddlewareAfter.php';
+
+function hleb_bt3e3gl60pg8h71e00jep901_error_404() {
+    exit();
+}
 
 define('HLEB_LOAD_ROUTES_DIRECTORY', HL_FRAMEWORK_TESTS_DIR . '/resources/routes');
 define('HLEB_STORAGE_CACHE_ROUTES_DIRECTORY',  HL_FRAMEWORK_TESTS_DIR . '/resources/routes');

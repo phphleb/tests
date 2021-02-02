@@ -1,4 +1,10 @@
 <?php
+/**
+Route::before('<before>Before@index');
+Route::get("/{test}/{main}/{before}/");
+Route::controller('<test>@get<main>');
+ * **/
+
 
 Route::get("/", "MAIN-PAGE");
 
@@ -61,13 +67,13 @@ Route::prefix('/test-12-2/');
 
 Route::getGroup(); // Начало группы 2
 
-Route::get('/a3/', "TEST-NAMED-GROUP-1" ); // "/test-12-1/test-12-2/a3/"
+Route::get('/a3/', "TEST-NAMED-GROUP-1"); // "/test-12-1/test-12-2/a3/"
 
-Route::get('/b3/', "TEST-NAMED-GROUP-2" ); // "/test-12-1/test-12-2/b3/"
+Route::get('/b3/', "TEST-NAMED-GROUP-2"); // "/test-12-1/test-12-2/b3/"
 
 Route::endGroup('Group 1'); // Завершение группы "Group 1"
 
-Route::get( '/test-12-3/', "TEST-NAMED-GROUP-3"); // "/test-12-2/test-12-3/"
+Route::get('/test-12-3/', "TEST-NAMED-GROUP-3"); // "/test-12-2/test-12-3/"
 
 Route::endGroup(); // Завершение группы 2
 
@@ -86,15 +92,15 @@ Route::endProtect();
 // Работа с поддоменами
 Route::prefix("/test-subdomains/")->getGroup();
 
-Route::domain(null)->get( '/default/', "TEST-SUBDOMAIN-DEFAULT");
+Route::domain(null)->get('/default/', "TEST-SUBDOMAIN-DEFAULT");
 
-Route::domain("dev")->get( '/default/', "TEST-SUBDOMAIN-DEV-1");
+Route::domain("dev")->get('/default/', "TEST-SUBDOMAIN-DEV-1");
 
 Route::endGroup();
 
 Route::domain("dev1")->getGroup();
 
-Route::get("/test-subdomains/2/", "TEST-SUBDOMAIN-DEV-2" ); // dev1.site.com/test-subdomains/2/ или *.dev1.site.com/test-subdomains/2/
+Route::get("/test-subdomains/2/", "TEST-SUBDOMAIN-DEV-2"); // dev1.site.com/test-subdomains/2/ или *.dev1.site.com/test-subdomains/2/
 
 Route::endGroup();
 
@@ -113,4 +119,65 @@ Route::domain("subd3")->domain("*")->get("/test-subdomains/8/", "TEST-SUBDOMAIN-
 Route::domain("subd3")->get("/test-subdomains/9/", "TEST-SUBDOMAIN-DEV-9");
 
 Route::domain("subd4", 4)->get("/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10");
+
+
+// Тестирование контроллеров
+
+$controllerName = 'Test474eff721eee4c33056ab6a4c91b522bNum1Controller';
+
+$middlewareAfterName = 'Testa30535006038eac8c105b34b05112ca9Num1MiddlewareAfter';
+
+$middlewareBeforeName = 'Test6032ca1ff49c11e8a7a2b17afed6858bMiddlewareBefore';
+
+Route::prefix('test-controller')->getGroup();
+
+Route::get('/cnt0/')->controller($controllerName);
+
+Route::get('/cnt1/')->controller($controllerName . '@getTestVariables', ['testValue1', 'testValue2']);
+
+Route::get('/cnt2/')->controller($controllerName . '@getTestVariables', ['testValue1', 100500]);
+
+Route::get('/cnt3/')->controller($controllerName)->after($middlewareAfterName);
+
+Route::get('/cnt4/')->controller($controllerName)->after($middlewareAfterName . '@getTestParams', ['testMValue1', 'testMValue2']);
+
+Route::get('/cnt5/', "MAIN-PAGE")->after($middlewareAfterName . '@getTestParams', ['testMValue1', 'testMValue2']);
+
+Route::get('/cnt6/', "MAIN-PAGE")->after($middlewareAfterName . '@getTestParams', ['testMValue1', 100500]);
+
+Route::before($middlewareBeforeName)->before($middlewareBeforeName)->get('/cnt7/', "MAIN-PAGE")->after($middlewareAfterName)->after($middlewareAfterName);
+
+Route::before($middlewareBeforeName)->before($middlewareBeforeName . '@getTestParams', ['testMbValue1', 'testMbValue2'])->get('/cnt8/', "MAIN-PAGE");
+
+Route::before($middlewareBeforeName . '@getTestParams', ['testMbValue11', 'testMbValue21'])->before($middlewareBeforeName . '@getTestParams', ['testMbValue1', 'testMbValue2'])->get('/cnt9/', "MAIN-PAGE");
+
+Route::endGroup();
+
+
+$compoundName1 = 'Test474eff721eee4c33056ab6a4c91b522bNum1<test>';
+
+$compoundName2 = '<main>474eff721eee4c33056ab6a4c91b522bNum1<test>';
+
+$compoundName3 = '<main>474eff721eee4c33056ab6a4c91b522bNum1<test>';
+
+$compoundName4 = 'Test474eff721eee4c33056ab6a4c91b522bNum1Controller@get<mainx><testx>';
+
+$compoundName5 = '<class1>474eff721eee4c33056ab6a4c91b522bNum1<class2>';
+
+Route::prefix('test-compound-controller')->getGroup();
+
+Route::get('/cp0/{test}/')->controller($compoundName1);
+
+Route::get('/cp1/{main}/{test}/')->controller($compoundName1);
+
+Route::get('/cp2/{main}/{test}/')->controller($compoundName2);
+
+Route::get('/cp3/{main}/{test}/')->controller($compoundName1 . '@index');
+
+Route::get('/cp4/{mainx}/{testx}/')->controller($compoundName4);
+
+Route::get('/cp5/{test}/{method}/')->controller($compoundName1 . '@<method>');
+
+Route::endGroup();
+
 
