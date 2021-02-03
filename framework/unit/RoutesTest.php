@@ -65,7 +65,8 @@ class RoutesTest extends TestCase
         48 => ["/test-subdomains/7/", "TEST-SUBDOMAIN-DEV-7"],
         49 => ["/test-subdomains/8/", "TEST-SUBDOMAIN-DEV-8"],
         50 => ["/test-subdomains/9/", "TEST-SUBDOMAIN-DEV-9"],
-        51 => ["/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10"],
+        51 => ["/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10"],       
+
     ];
 
 
@@ -435,11 +436,7 @@ class RoutesTest extends TestCase
         $this->assertTrue(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.variable.site.com") === self::ACTIONS[51][1]);
     }
 
-    // Пороверка от противного работоспособности метода ->domain(...)
-    public function testDomain17()
-    {
-        $this->assertFalse(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.site.com") === self::ACTIONS[51][1]);
-    }
+    
 
     private function mainTestData($route = null, $method = null, $key = null, $domain = null)
     {

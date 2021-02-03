@@ -14,6 +14,7 @@ require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/ProtectedCSRF.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Workspace.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/VCreator.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
+require_once HLEB_FRAMEWORK_DIR . "/Main/Errors/ErrorOutput.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
 
@@ -24,6 +25,8 @@ require_once HLEB_FRAMEWORK_DIR . "Scheme/App/Middleware/MainMiddleware.php";
 require_once HLEB_FRAMEWORK_DIR . "Main/TryClass.php";
 
 require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474eff721eee4c33056ab6a4c91b522bNum1Controller.php';
+
+require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474eff721eee4c33056ab6a4c91b522bNum2Controller.php';
 
 require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test6032ca1ff49c11e8a7a2b17afed6858bMiddlewareBefore.php';
 

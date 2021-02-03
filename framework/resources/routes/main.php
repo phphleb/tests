@@ -1,4 +1,10 @@
 <?php
+/**
+Route::before('<before>Before@index');
+Route::get("/{test}/{main}/{before}/");
+Route::controller('<test>@get<main>');
+ * **/
+
 
 Route::get("/", "MAIN-PAGE");
 
@@ -158,6 +164,12 @@ $compoundName4 = 'Test474eff721eee4c33056ab6a4c91b522bNum1Controller@get<mainx><
 
 $compoundName5 = '<class1>474eff721eee4c33056ab6a4c91b522bNum1<class2>';
 
+$compoundName6 = '<class1>474eff721eee4c33056ab6a4c91b522bNum1<class2>@get<method>';
+
+$compoundName7 = 'Dir\Test474eff721eee4c33056ab6a4c91b522bNum2Controller@index';
+
+$compoundName8 = '<path>\<class>474eff721eee4c33056ab6a4c91b522bNum2Controller@<method>';
+
 Route::prefix('test-compound-controller')->getGroup();
 
     Route::get('/cp0/{test}/')->controller($compoundName1);
@@ -171,6 +183,12 @@ Route::prefix('test-compound-controller')->getGroup();
     Route::get('/cp4/{mainx}/{testx}/')->controller($compoundName4);
 
     Route::get('/cp5/{test}/{method}/')->controller($compoundName1 . '@<method>');
+
+    Route::get('/cp6/{class1}/{class2}/{method}/')->controller($compoundName6);
+
+    Route::get('/cp7/dir/')->controller($compoundName7);
+
+    Route::prefix('/cp8/')->get('/{path}/{class}/{method}/')->controller($compoundName8);
 
 Route::endGroup();
 
