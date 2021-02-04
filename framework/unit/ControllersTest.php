@@ -31,9 +31,9 @@ class ControllersTest extends TestCase
         13 => ['/test-compound-controller/cp1/controller2/controller/', 'index:OK'],
         14 => ['/test-compound-controller/cp2/test/controller/', 'index:OK'],
         15 => ['/test-compound-controller/cp2/test2/controller/', 'index:OK'], // error
-        16 => ['/test-compound-controller/cp1/0/controller/', 'index:OK'], // error
+        16 => ['/test-compound-controller/cp1/0/controller/', 'index:OK'],
         17 => ['/test-compound-controller/cp3/test/controller/', 'index:OK'],
-        18 => ['/test-compound-controller/cp3/0/controller/', 'index:OK'], // error
+        18 => ['/test-compound-controller/cp3/0/controller/', 'index:OK'],
         19 => ['/test-compound-controller/cp4/main/test/', 'getMainTest:OK'],
         20 => ['/test-compound-controller/cp4/main2/test/', 'getMainTest:OK'], // error
         21 => ['/test-compound-controller/cp4/main/test2/', 'getMainTest:OK'], // error
@@ -46,7 +46,7 @@ class ControllersTest extends TestCase
         27 => ["/test-compound-controller/cp7/dir/", "Dir:index:OK"],
         28 => ["/test-compound-controller/cp8/dir/test/index/", "Dir:index:OK"],
     ];
-    
+
     public function testControllerNum1()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[1][0], "GET") === self::ACTIONS[1][1]);
@@ -124,7 +124,7 @@ class ControllersTest extends TestCase
 
     public function testControllerNum16()
     {
-        $this->assertFalse(self::mainTestData(self::ACTIONS[16][0], "GET") === self::ACTIONS[16][1]);
+        $this->assertTrue(self::mainTestData(self::ACTIONS[16][0], "GET") === self::ACTIONS[16][1]);
     }
 
     public function testControllerNum17()
@@ -134,7 +134,7 @@ class ControllersTest extends TestCase
 
     public function testControllerNum18()
     {
-        $this->assertFalse(self::mainTestData(self::ACTIONS[18][0], "GET") === self::ACTIONS[18][1]);
+        $this->assertTrue(self::mainTestData(self::ACTIONS[18][0], "GET") === self::ACTIONS[18][1]);
     }
 
     public function testControllerNum19()
