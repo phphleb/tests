@@ -5,6 +5,10 @@ require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
 
+function hleb_actual_http_protocol($complete = true) {
+    return ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http') . ($complete ? '://' : '');
+}
+
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Request.php";
 
 if (session_status()!= 1)   session_start();
@@ -26,7 +30,6 @@ $_SERVER['X_REQUESTED_WITH'] = 'XMLHttpRequest';
 $_FILES = "Array";
 $_SERVER['PATH_INFO'] = "/some/test";
 
-\Hleb\Constructor\Handlers\Request::close();
 $_COOKIE = NEW_COOKIE;
 $_SESSION = NEW_SESSION;
 

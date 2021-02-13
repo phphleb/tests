@@ -43,30 +43,10 @@ class RequestTest extends TestCase
         $this->assertTrue(Request::get(self::TEST_NAME2) === (double) self::TEST_VALUE2);
     }
 
-    // Проверка, закрывается ли для изменений
-    public function testCloseData()
-    {
-        Request::close();
-        Request::add(self::TEST_NAME3, self::TEST_VALUE3);
-        $this->assertNull(Request::get(self::TEST_NAME3));
-    }
-
-    // Проверка на первоначальное значение сессии
-    public function testStartSesion()
-    {
-        $this->assertTrue( self::mainTestData("getInitialSession", "S1") === self::START_SESSION["S1"] );
-    }
-
     // Проверка на вторичное значение сессии
     public function testSecondSesion()
     {
         $this->assertTrue( self::mainTestData("getSession", "S1") === self::NEW_SESSION["S1"] );
-    }
-
-    // Проверка на первоначальное значение кукисов
-    public function testStartCookie()
-    {
-        $this->assertTrue( self::mainTestData("getInitialCookie", "C1") === self::START_COOKIE["C1"] );
     }
 
     // Проверка на вторичное значение кукисов
@@ -138,7 +118,7 @@ class RequestTest extends TestCase
     // Проверка на получение полного адреса домена
     public function testGetFullUrl()
     {
-        $this->assertTrue( self::mainTestData("getFullUrl", "") === "https://test.site/index.html" );
+        $this->assertTrue( self::mainTestData("getFullUrl", "") === "http://localhost:8080/index.html" );
     }
 
     // Проверка на получение полного адреса домена

@@ -46,7 +46,7 @@ class ControllersTest extends TestCase
         27 => ["/test-compound-controller/cp7/dir/", "Dir:index:OK"],
         28 => ["/test-compound-controller/cp8/dir/test/index/", "Dir:index:OK"],
     ];
-
+    
     public function testControllerNum1()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[1][0], "GET") === self::ACTIONS[1][1]);
