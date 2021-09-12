@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": "^7.0.0 || ^8.0.0",
-    "phphleb/framework": "1.5.65",
+    "phphleb/framework": "1.5.66",
     "phpunit/phpunit": ">=6.0.0"
   },
   "config": {
