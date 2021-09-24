@@ -26,7 +26,7 @@ $_POST = ["POST1" => "POST100", "POST2" => "<script>alert('H');</script>POST200"
 $_REQUEST = ["REQUEST1" => "REQUEST100", "REQUEST2" => "<script>alert('H');</script>REQUEST200", "REQUEST3" => 10001, "REQUEST4" => 1000.1, "REQUEST5" => -10001];
 
 $_SERVER['HTTP_HOST'] = "localhost:8080";
-$_SERVER['X_REQUESTED_WITH'] = 'XMLHttpRequest';
+$_SERVER['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
 $_FILES = "Array";
 $_SERVER['PATH_INFO'] = "/some/test";
 

@@ -130,7 +130,7 @@ class RequestTest extends TestCase
     // Проверка на получение X_REQUESTED_WITH, чтобы отличить ajax-запрос от запроса
     public function testXmlHttpRequest()
     {
-        $this->assertTrue( self::mainTestData("isXmlHttpRequest", "") === "" );
+        $this->assertTrue( self::mainTestData("isXmlHttpRequest", "") === "1" );
     }
 
     // Проверка на получение массива значений для загруженного файла
