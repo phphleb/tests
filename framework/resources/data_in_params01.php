@@ -1,1 +1,1 @@
-<?php if(isset($param)) print $param;
+<?php if(isset($param) && $param === $this->param) print $param;

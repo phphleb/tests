@@ -22,7 +22,7 @@ class VCreatorTest extends TestCase
     // Правильный ли контент у файла - заглушки
     public function testResourceContent()
     {
-        $this->assertEquals(file_get_contents(self::INCLUDE_FILE, true), '<?php if(isset($param)) print $param;' );
+        $this->assertEquals(file_get_contents(self::INCLUDE_FILE, true), '<?php if(isset($param) && $param === $this->param) print $param;' );
     }
 
     // Работает ли (вывод параметров)
