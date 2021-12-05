@@ -67,6 +67,11 @@ if(!empty($SECURITY_TOKEN)) {
 
 $_SERVER['HTTP_X_FORWARDED_HOST'] =  $HTTP_X_FORWARDED_HOST;
 
+/**
+ * @return mixed
+ *
+ * @internal
+ */
 function hleb_to0me1cd6vo7gd_data()
 {
     return \Hleb\Constructor\Routes\Data::return_data();
@@ -98,6 +103,13 @@ function hleb_get_host() {
     return trim($host);
 }
 
+/**
+ * @param $render
+ * @param null $data
+ * @return mixed
+ *
+ * @internal
+ */
 function hleb_v10s20hdp8nm7c_render($render, $data = null)
 {
 

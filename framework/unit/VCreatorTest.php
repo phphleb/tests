@@ -6,6 +6,7 @@ require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Constructor/VCreator.php";
 
+/** @internal */
 function hleb_to0me1cd6vo7gd_data(){ return ["param" => "100"]; };
 
 use PHPUnit\Framework\TestCase;
