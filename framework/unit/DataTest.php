@@ -7,9 +7,9 @@ require_once __DIR__ . "/../conf.php";
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
 
-if(function_exists("hleb_to0me1cd6vo7gd_data")){
+if(function_exists("hleb_data")){
     /** @internal */
-    function hleb_to0me1cd6vo7gd_data(){
+    function hleb_data(){
         return ["param" => "100"];
     }
 }

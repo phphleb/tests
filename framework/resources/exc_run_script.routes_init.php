@@ -32,7 +32,7 @@ require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test6032ca1ff4
 
 require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Testa30535006038eac8c105b34b05112ca9Num1MiddlewareAfter.php';
 
-function hleb_bt3e3gl60pg8h71e00jep901_error_404() {
+function hleb_page_404() {
     exit();
 }
 
@@ -72,7 +72,7 @@ $_SERVER['HTTP_X_FORWARDED_HOST'] =  $HTTP_X_FORWARDED_HOST;
  *
  * @internal
  */
-function hleb_to0me1cd6vo7gd_data()
+function hleb_data()
 {
     return \Hleb\Constructor\Routes\Data::return_data();
 }
@@ -110,7 +110,7 @@ function hleb_get_host() {
  *
  * @internal
  */
-function hleb_v10s20hdp8nm7c_render($render, $data = null)
+function hleb_render($render, $data = null)
 {
 
     if (is_string($render)) {
@@ -118,7 +118,7 @@ function hleb_v10s20hdp8nm7c_render($render, $data = null)
         $render = [$render];
     }
 
-    return hleb_gop0m3f4hpe10d_all($render, $data, 'render');
+    return hleb_all($render, $data, 'render');
 }
 
 $opt = (new Hleb\Constructor\Routes\LoadRoutes());
