@@ -125,9 +125,9 @@ $opt = (new Hleb\Constructor\Routes\LoadRoutes());
 
 $routes_array = $opt->loadCache() ?? [];
 
-$block = (new Hleb\Constructor\Handlers\URLHandler())->page($routes_array);
-
 $render_map = $routes_array['render'] ?? [];
+
+$block = (new Hleb\Constructor\Handlers\URLHandler())->page($routes_array);
 
 if ($block) {
 
