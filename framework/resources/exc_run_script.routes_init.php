@@ -8,13 +8,15 @@ require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/LoadRoutes.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/URLHandler.php";
+require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/URL.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Request.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/Key.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Handlers/ProtectedCSRF.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Workspace.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/VCreator.php";
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
-require_once HLEB_FRAMEWORK_DIR . "/Main/Errors/ErrorOutput.php";
+require_once HLEB_FRAMEWORK_DIR . "Main/Errors/ErrorOutput.php";
+require_once HLEB_FRAMEWORK_DIR . "Main/Helpers/RangeChecker.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Constructor/Routes/Data.php";
 
@@ -25,6 +27,8 @@ require_once HLEB_FRAMEWORK_DIR . "Scheme/App/Middleware/MainMiddleware.php";
 require_once HLEB_FRAMEWORK_DIR . "Main/TryClass.php";
 
 require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474eff721eee4c33056ab6a4c91b522bNum1Controller.php';
+
+require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474esf721eee9c33056ab6a4c91b522bMultipleController.php';
 
 require_once HL_FRAMEWORK_TESTS_DIR . '/resources/app/Controllers/Test474eff721eee4c33056ab6a4c91b522bNum2Controller.php';
 

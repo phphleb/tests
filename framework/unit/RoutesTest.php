@@ -6,6 +6,7 @@ require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/BaseSingleton.php";
 
+use Hleb\Constructor\Handlers\URL;
 use PHPUnit\Framework\TestCase;
 
 class RoutesTest extends TestCase
@@ -65,7 +66,13 @@ class RoutesTest extends TestCase
         48 => ["/test-subdomains/7/", "TEST-SUBDOMAIN-DEV-7"],
         49 => ["/test-subdomains/8/", "TEST-SUBDOMAIN-DEV-8"],
         50 => ["/test-subdomains/9/", "TEST-SUBDOMAIN-DEV-9"],
-        51 => ["/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10"],       
+        51 => ["/test-subdomains/10/", "TEST-SUBDOMAIN-DEV-10"],
+        52 => ["/t3/multiple/v1/test", "MULTIPLE-ROUTE-V1"],
+        53 => ["/t3/multiple/v1/", "MULTIPLE-ROUTE-V1"],
+        54 => ["/t3/multiple/v1/1/2/3/4/5/6/7/8/9/10/", "MULTIPLE-ROUTE-V1"],
+        55 => ["/t3/multiple/v1/1/2/3/4/5/6/7/8/9/10/11/", "MULTIPLE-ROUTE-V1"],
+        56 => ["/t3/multiple/v2/test/test2", "getRequest:test:test2OK"],
+        57 => ["/t3/multiple/v2/test", "getRequest:testOK"],
 
     ];
 
@@ -436,7 +443,41 @@ class RoutesTest extends TestCase
         $this->assertTrue(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.variable.site.com") === self::ACTIONS[51][1]);
     }
 
-    
+    // Пороверка работоспособности множественных маршрутов
+    public function testMultipleRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[52][0], "GET") === self::ACTIONS[52][1]);
+    }
+
+    // Пороверка работоспособности множественных маршрутов
+    public function testMultipleRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[53][0], "GET") === self::ACTIONS[53][1]);
+    }
+
+    // Пороверка работоспособности множественных маршрутов
+    public function testMultipleRoute3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[54][0], "GET") === self::ACTIONS[54][1]);
+    }
+
+    // Пороверка работоспособности множественных маршрутов (проверка маршрута вне допустимого)
+    public function testMultipleRoute4()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[55][0], "GET") !== self::ACTIONS[55][1]);
+    }
+
+    // Пороверка работоспособности множественных маршрутов (проверка сохранения в Request)
+    public function testMultipleRoute5()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[56][0], "GET") === self::ACTIONS[56][1]);
+    }
+
+    // Пороверка работоспособности множественных маршрутов (проверка на отсутствие в заданных)
+    public function testMultipleRoute6()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[57][0], "GET") !== self::ACTIONS[57][1]);
+    }
 
     private function mainTestData($route = null, $method = null, $key = null, $domain = null)
     {

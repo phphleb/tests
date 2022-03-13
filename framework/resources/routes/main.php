@@ -192,5 +192,11 @@ Route::prefix('test-compound-controller')->getGroup();
 
 Route::endGroup();
 
+$controllerMultipleName = 'Test474esf721eee9c33056ab6a4c91b522bMultipleController';
 
+Route::get('/t3/multiple/v1/...0-10,12,20-99/', 'MULTIPLE-ROUTE-V1');
+
+Route::get('/t3/multiple/v2/...2-10/')->controller($controllerMultipleName . '@getRequest')->name('multiple-route-v2');
+
+Route::get('/t3/multiple/v3/...1/')->controller($controllerMultipleName . '@getUrlByName');
 
