@@ -17,7 +17,7 @@ Install PHPUnit
 ```bash
 $ composer require phpunit/phpunit ^9.0.0
 ```
-рнпппппппп//////////////////////////////////
+
 Install tests
 
 ```bash
