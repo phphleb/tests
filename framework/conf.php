@@ -32,4 +32,5 @@ if (!function_exists('hl_preliminary_exit')) {
 
 require_once HLEB_FRAMEWORK_DIR . "Main/Insert/DeterminantStaticUncreated.php";
 
+require_once HLEB_FRAMEWORK_DIR . "Scheme/App/Controllers/BaseController.php";
 
