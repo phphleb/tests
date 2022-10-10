@@ -15,14 +15,16 @@ class AddressBarTest extends TestCase
     const DEFAULT_DATA = [
         "SERVER" => [
             'REQUEST_URI'=>"/test/",
-            'HTTP_HOST'=>'site.ru'
+            'HTTP_HOST'=>'site.ru',
+            'REQUEST_METHOD' => 'GET'
         ],
         "HTTPS" => "https://",
         "HLEB_PROJECT_ONLY_HTTPS" => true,
         "HLEB_PROJECT_ENDING_URL" => true,
         "HLEB_PROJECT_DIRECTORY" => HLEB_PROJECT_DIRECTORY,
         "HLEB_PROJECT_GLUE_WITH_WWW" => 0,
-        "HLEB_PROJECT_VALIDITY_URL" => "/^[a-z0-9а-яё\_\-\/\.]+$/u"
+        "HLEB_PROJECT_VALIDITY_URL" => "/^[a-z0-9а-яё\_\-\/\.]+$/u",
+        "HLEB_ENDING_URL_INCLUDING_METHODS" => ['get']
     ];
     CONST INCLUDE_EXEC_FILE = HL_RESOURCES_DIR . "exc_run_script.url_test_address_bar.php";
     CONST INCLUDE_EXEC_FILE2 = HL_RESOURCES_DIR . "exc_run_script.url_test_address_bar2.php";
@@ -264,6 +266,29 @@ class AddressBarTest extends TestCase
         $this->assertTrue("https://сайт.рф/тест.тест" == $value);
     }
 
+    // Проверка, что НЕ редиректит без слеша в конце для указанного метода
+    public function testBarParamsNew1()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = true;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test";
+        $origin_data["SERVER"]['REQUEST_METHOD'] = "POST";
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE,  $origin_data);
+        $this->assertTrue("https://site.ru/test" == $value);
+    }
+
+    // Проверка, что редиректит без слеша в конце для указанного метода
+    public function testBarParamsNew2()
+    {
+        $origin_data = self::DEFAULT_DATA;
+        $origin_data["HLEB_PROJECT_ENDING_URL"] = true;
+        $origin_data["SERVER"]['REQUEST_URI'] = "/test";
+        $origin_data["SERVER"]['REQUEST_METHOD'] = "POST";
+        $origin_data["HLEB_ENDING_URL_INCLUDING_METHODS"] = ['get', 'post'];
+        $value = $this->mainTestGetData(self::INCLUDE_EXEC_FILE2,  $origin_data);
+        $this->assertTrue("https://site.ru/test/" == $value);
+    }
+
     private function mainTestGetData(string $filename, array $data)
     {
         $command = "php " . $filename . " " .
@@ -274,7 +299,9 @@ class AddressBarTest extends TestCase
             ($data["HLEB_PROJECT_ENDING_URL"] ? 1 : 0) . " " .
             $data["HLEB_PROJECT_DIRECTORY"] . " " .
             $data["HLEB_PROJECT_GLUE_WITH_WWW"] . " " .
-            urlencode($data["HLEB_PROJECT_VALIDITY_URL"]) . " ";
+            urlencode($data["HLEB_PROJECT_VALIDITY_URL"]) . " " .
+            implode(',', $data["HLEB_ENDING_URL_INCLUDING_METHODS"]) . " " .
+            $data["SERVER"]['REQUEST_METHOD'] . " ";
 
         $result = exec($command);
         return $result;
