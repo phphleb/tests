@@ -81,9 +81,8 @@ class RoutesTest extends TestCase
         63 => ["/test-new-route/match/1/", "TEST-MATCH-ROUTE-1"],
         64 => ["/test-new-route/options/1/", ""],
         65 => ["/test-new-route/match/2/", "TEST-MATCH-ROUTE-2"],
-        66 => ["/test-after-fallback/1", "TEST-FALLBACK-1"],
+        66 => ["/test-after-fallback/1", "UNDEFINED-PAGE-1"],
         67 => ["/test-after-fallback/100500/404", "TEST-FALLBACK-1"],
-
     ];
 
 
@@ -641,7 +640,7 @@ class RoutesTest extends TestCase
         }
         $command = "php " . self::FILENAME . " " . $route . " " . $method . " " . $key . " " . $domain;
         $result = exec($command);
-        //var_dump($result);
+
         return $result;
     }
 }
