@@ -73,6 +73,16 @@ class RoutesTest extends TestCase
         55 => ["/t3/multiple/v1/1/2/3/4/5/6/7/8/9/10/11/", "MULTIPLE-ROUTE-V1"],
         56 => ["/t3/multiple/v2/test/test2", "getRequest:test:test2OK"],
         57 => ["/t3/multiple/v2/test", "getRequest:testOK"],
+        58 => ["/test-new-route/post/1/", "TEST-POST-ROUTE-1"],
+        59 => ["/test-new-route/add/1/", "TEST-ADD-ROUTE-1"],
+        60 => ["/test-new-route/patch/1/", "TEST-PATCH-ROUTE-1"],
+        61 => ["/test-new-route/delete/1/", "TEST-DELETE-ROUTE-1"],
+        62 => ["/test-new-route/any/1/", "TEST-ANY-ROUTE-1"],
+        63 => ["/test-new-route/match/1/", "TEST-MATCH-ROUTE-1"],
+        64 => ["/test-new-route/options/1/", ""],
+        65 => ["/test-new-route/match/2/", "TEST-MATCH-ROUTE-2"],
+        66 => ["/test-after-fallback/1", "TEST-FALLBACK-1"],
+        67 => ["/test-after-fallback/100500/404", "TEST-FALLBACK-1"],
 
     ];
 
@@ -341,143 +351,288 @@ class RoutesTest extends TestCase
         $this->assertTrue(self::mainTestData(self::ACTIONS[40][0], "GET", self::KEY) === self::ACTIONS[40][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain0()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[41][0], "GET", self::KEY, "site.com") === self::ACTIONS[41][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...) c субдоменом dev
+    // Проверка работоспособности метода ->domain(...) c субдоменом dev
     public function testDomain1()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[42][0], "GET", self::KEY, "dev.site.com") === self::ACTIONS[42][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...) c субдоменом dev1
+    // Проверка работоспособности метода ->domain(...) c субдоменом dev1
     public function testDomain2()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[43][0], "GET", self::KEY, "dev1.site.com") === self::ACTIONS[43][1]);
     }
 
-    // Пороверка от противного работоспособности метода ->domain(...) c субдоменом dev1
+    // Проверка от противного работоспособности метода ->domain(...) c субдоменом dev1
     public function testDomain3()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[43][0], "GET", self::KEY, "variable.dev1.site.com") === self::ACTIONS[43][1]);
     }
 
-    // Пороверка от противного работоспособности метода ->domain(...) c субдоменом dev1
+    // Проверка от противного работоспособности метода ->domain(...) c субдоменом dev1
     public function testDomain4()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[45][0], "GET", self::KEY, "sub4.sub3.site.com") === self::ACTIONS[45][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain5()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "var1.site.com") === self::ACTIONS[46][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain6()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "site.com") === self::ACTIONS[46][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain7()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "variable.var1.site.com") === self::ACTIONS[46][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain8()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "variable.var2.site.com") === self::ACTIONS[46][1]);
     }
 
-    // Пороверка от противного работоспособности метода ->domain(...)
+    // Проверка от противного работоспособности метода ->domain(...)
     public function testDomain9()
     {
         $this->assertFalse(self::mainTestData(self::ACTIONS[46][0], "GET", self::KEY, "var2.variable.site.com") === self::ACTIONS[46][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain10()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[47][0], "GET", self::KEY, "site.com") === self::ACTIONS[47][1]);
     }
 
-    // Пороверка от противного работоспособности метода ->domain(...)
+    // Проверка от противного работоспособности метода ->domain(...)
     public function testDomain11()
     {
         $this->assertFalse(self::mainTestData(self::ACTIONS[47][0], "GET", self::KEY, "subdomain.site.com") === self::ACTIONS[47][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain12()
     {
         $this->assertFalse(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd2.site.com") === self::ACTIONS[48][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain13()
     {
         $this->assertFalse(self::mainTestData(self::ACTIONS[49][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[49][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain14()
     {
         $this->assertFalse(self::mainTestData(self::ACTIONS[48][0], "GET", self::KEY, "subd1.site.com") === self::ACTIONS[48][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain15()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[50][0], "GET", self::KEY, "subd3.site.com") === self::ACTIONS[50][1]);
     }
 
-    // Пороверка работоспособности метода ->domain(...)
+    // Проверка работоспособности метода ->domain(...)
     public function testDomain16()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[51][0], "GET", self::KEY, "subd4.variable.site.com") === self::ACTIONS[51][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов
+    // Проверка работоспособности множественных маршрутов
     public function testMultipleRoute1()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[52][0], "GET") === self::ACTIONS[52][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов
+    // Проверка работоспособности множественных маршрутов
     public function testMultipleRoute2()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[53][0], "GET") === self::ACTIONS[53][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов
+    // Проверка работоспособности множественных маршрутов
     public function testMultipleRoute3()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[54][0], "GET") === self::ACTIONS[54][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов (проверка маршрута вне допустимого)
+    // Проверка работоспособности множественных маршрутов (проверка маршрута вне допустимого)
     public function testMultipleRoute4()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[55][0], "GET") !== self::ACTIONS[55][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов (проверка сохранения в Request)
+    // Проверка работоспособности множественных маршрутов (проверка сохранения в Request)
     public function testMultipleRoute5()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[56][0], "GET") === self::ACTIONS[56][1]);
     }
 
-    // Пороверка работоспособности множественных маршрутов (проверка на отсутствие в заданных)
+    // Проверка работоспособности множественных маршрутов (проверка на отсутствие в заданных)
     public function testMultipleRoute6()
     {
         $this->assertTrue(self::mainTestData(self::ACTIONS[57][0], "GET") !== self::ACTIONS[57][1]);
     }
+
+    // Проверка работоспособности маршрута POST
+    public function testPostRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[58][0], "POST") === self::ACTIONS[58][1]);
+    }
+
+    // Проверка работоспособности маршрута POST (проверка на отсутствие в заданных)
+    public function testPostRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[58][0], "GET") !== self::ACTIONS[58][1]);
+    }
+
+    // Проверка работоспособности маршрута add (проверка на отсутствие в заданных)
+    public function testAddRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[59][0], "POST") !== self::ACTIONS[59][1]);
+    }
+
+    // Проверка работоспособности маршрута add
+    public function testAddRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[59][0], "GET") === self::ACTIONS[59][1]);
+    }
+
+    // Проверка работоспособности маршрута patch (проверка на отсутствие в заданных)
+    public function testPatchRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[60][0], "POST") !== self::ACTIONS[60][1]);
+    }
+
+    // Проверка работоспособности маршрута patch
+    public function testPatchRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[60][0], "PATCH") === self::ACTIONS[60][1]);
+    }
+
+    // Проверка работоспособности маршрута patch (проверка на отсутствие в заданных)
+    public function testPatchRoute3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[60][0], "GET") !== self::ACTIONS[60][1]);
+    }
+
+    // Проверка работоспособности маршрута Delete (проверка на отсутствие в заданных)
+    public function testDeleteRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[61][0], "POST") !== self::ACTIONS[61][1]);
+    }
+
+    // Проверка работоспособности маршрута Delete
+    public function testDeleteRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[61][0], "DELETE") === self::ACTIONS[61][1]);
+    }
+
+    // Проверка работоспособности маршрута Delete (проверка на отсутствие в заданных)
+    public function testDeleteRoute3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[61][0], "GET") !== self::ACTIONS[61][1]);
+    }
+
+    // Проверка работоспособности маршрута Options
+    public function testOptionsRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[64][0], "OPTIONS") === self::ACTIONS[64][1]);
+    }
+
+    // Проверка работоспособности маршрута any
+    public function testAnyRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[62][0], "POST") === self::ACTIONS[62][1]);
+    }
+
+    // Проверка работоспособности маршрута any
+    public function testAnyRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[62][0], "GET") === self::ACTIONS[62][1]);
+    }
+
+    // Проверка работоспособности маршрута any
+    public function testAnyRoute3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[62][0], "DELETE") === self::ACTIONS[62][1]);
+    }
+
+    // Проверка работоспособности маршрута any
+    public function testAnyRoute4()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[62][0], "PATCH") === self::ACTIONS[62][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[63][0], "PATCH") === self::ACTIONS[63][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[63][0], "POST") === self::ACTIONS[63][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute3()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[63][0], "GET") !== self::ACTIONS[63][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute4()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[63][0], "DELETE") !== self::ACTIONS[63][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute5()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[65][0], "DELETE") === self::ACTIONS[65][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute6()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[65][0], "POST") !== self::ACTIONS[65][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testMatchRoute7()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[65][0], "GET") !== self::ACTIONS[65][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testFallbackRoute1()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[66][0], "GET") === self::ACTIONS[66][1]);
+    }
+
+    // Проверка работоспособности маршрута match
+    public function testFallbackRoute2()
+    {
+        $this->assertTrue(self::mainTestData(self::ACTIONS[67][0], "POST") === self::ACTIONS[67][1]);
+    }
+
 
     private function mainTestData($route = null, $method = null, $key = null, $domain = null)
     {

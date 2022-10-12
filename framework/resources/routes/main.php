@@ -200,3 +200,30 @@ Route::get('/t3/multiple/v2/...2-10/')->controller($controllerMultipleName . '@g
 
 Route::get('/t3/multiple/v3/...1/')->controller($controllerMultipleName . '@getUrlByName');
 
+// Новые роуты
+
+Route::post('/test-new-route/post/1/', "TEST-POST-ROUTE-1");
+
+Route::add('/test-new-route/add/1/', "TEST-ADD-ROUTE-1");
+
+Route::patch('/test-new-route/patch/1/', "TEST-PATCH-ROUTE-1");
+
+Route::delete('/test-new-route/delete/1/', "TEST-DELETE-ROUTE-1");
+
+Route::options('/test-new-route/options/1/');
+
+Route::any('/test-new-route/any/1/', "TEST-ANY-ROUTE-1");
+
+Route::match(['post', 'patch'], '/test-new-route/match/1/', "TEST-MATCH-ROUTE-1");
+
+Route::match(['delete'], '/test-new-route/match/2/', "TEST-MATCH-ROUTE-2");
+
+
+
+//////////////////////////////////////////////////////////////////
+
+Route::fallback( "TEST-FALLBACK-1");
+
+// After fallback
+
+Route::get("/test-after-fallback/1", "UNDEFINED-PAGE-1");
