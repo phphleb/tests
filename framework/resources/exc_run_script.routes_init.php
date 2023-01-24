@@ -59,7 +59,7 @@ define('HL_TWIG_CONNECTED', false);
 define('HLEB_PROJECT_DEBUG', false);
 define('HLEB_PROJECT_DEBUG_ON', false);
 define('HLEB_PROJECT_VERSION', "1.5.*");
-define('HLEB_MAIN_DOMAIN', "test.site");
+$GLOBALS['HLEB_MAIN_DOMAIN'] = "test.site";
 
 $_SERVER['REQUEST_URI'] = $REQUEST_URI;
 $_SERVER['REQUEST_METHOD'] =  $REQUEST_METHOD;
