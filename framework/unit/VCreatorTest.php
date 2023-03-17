@@ -6,6 +6,8 @@ require_once __DIR__ . "/../conf.php";
 
 require_once HLEB_FRAMEWORK_DIR . "Constructor/VCreator.php";
 
+/** @internal */
+function hleb_data(){ return ["param" => "100"]; };
 
 use PHPUnit\Framework\TestCase;
 
@@ -23,11 +25,4 @@ class VCreatorTest extends TestCase
     {
         $this->assertEquals(file_get_contents(self::INCLUDE_FILE, true), '<?php if(isset($param) && $param === $this->param) print $param;' );
     }
-
-    private function mainTestGetObj($include)
-    {
-        return (new Hleb\Constructor\VCreator($include));
-    }
-
-
 }
