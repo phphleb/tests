@@ -15,7 +15,7 @@ if (session_status()!= 1)   session_start();
 
 define("HLEB_PROJECT_ENDING_URL",  $argv[1] == 1 ? true : false );
 
-$GLOBALS['HLEB_PROJECT_PROTOCOL'] = $argv[2];
-$GLOBALS['HLEB_MAIN_DOMAIN'] = $argv[3];
+define("HLEB_PROJECT_PROTOCOL", $argv[2]);
+define("HLEB_MAIN_DOMAIN", $argv[3]);
 
 print \Hleb\Constructor\Handlers\URL::getFullUrl($argv[4]);

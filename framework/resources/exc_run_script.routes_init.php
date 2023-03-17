@@ -57,9 +57,9 @@ $HTTP_X_FORWARDED_HOST  = $argv[4] ?? 'site.com';
 define('HLEB_START', microtime(true));
 define('HL_TWIG_CONNECTED', false);
 define('HLEB_PROJECT_DEBUG', false);
-$GLOBALS['HLEB_PROJECT_DEBUG_ON'] = false;
+define('HLEB_PROJECT_DEBUG_ON', false);
 define('HLEB_PROJECT_VERSION', "1.5.*");
-$GLOBALS['HLEB_MAIN_DOMAIN'] = "test.site";
+define('HLEB_MAIN_DOMAIN', "test.site");
 
 $_SERVER['REQUEST_URI'] = $REQUEST_URI;
 $_SERVER['REQUEST_METHOD'] =  $REQUEST_METHOD;
