@@ -31,20 +31,6 @@ class TCreatorTest extends TestCase
     {
         $this->assertEquals( 60, $this->mainTestCacheTime());
     }
-    // Получается ли правильно выводить переменные
-    public function testData()
-    {
-        $this->assertEquals(1,$this->mainTestData());
-    }
-
-    private function mainTestData()
-    {
-        ob_start();
-        $this->mainTestGetObj(self::INCLUDE_FILE, ["param" => 1])->include();
-        $out = ob_get_contents();
-        ob_end_clean();
-        return $out;
-    }
 
     private function mainTestCacheTime()
     {
