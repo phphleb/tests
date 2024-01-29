@@ -1,25 +1,21 @@
 {
-  "name": "phphleb/tests",
-  "description": "PHPUnit tests from Micro-Framework HLEB",
-  "type": "library",
-  "keywords": [
-    "framework",
-    "tests"
-  ],
-  "homepage": "https://phphleb.ru",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Foma Tuturov",
-      "email": "fomiash@yandex.ru"
-    }
-  ],
-  "require": {
-    "php": "^7.0.0 || ^8.0.0",
-    "phphleb/framework": "1.7.0",
-    "phpunit/phpunit": ">=6.0.0"
-  },
-  "config": {
-    "optimize-autoloader": true
-  }
+    "name": "phphleb/tests",
+    "description": "Tests for framework HLEB2",
+    "type": "library",
+    "homepage": "https://hleb2framework.ru",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Foma Tuturov",
+            "email": "fomiash@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=8.2.0",
+        "phphleb/framework": "2.0.0",
+        "phphleb/test-o": "*",
+        "phphleb/idnaconv": "*",
+        "phphleb/psr-adapter": "*"
+    },
+    "minimum-stability": "dev"
 }

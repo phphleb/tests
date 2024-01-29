@@ -1,1 +1,0 @@
-<?php if(isset($param) && $param === $this->param) print $param;

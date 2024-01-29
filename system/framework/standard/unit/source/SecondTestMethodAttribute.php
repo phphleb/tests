@@ -1,0 +1,7 @@
+<?php
+
+#[Attribute]
+class SecondTestMethodAttribute
+{
+
+}
