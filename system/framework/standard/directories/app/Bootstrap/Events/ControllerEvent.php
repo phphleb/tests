@@ -20,7 +20,6 @@ final class ControllerEvent extends Event
     /**
      * @see Event
      */
-    #[\Override]
     public function before(string $class, string $method, array $arguments): array|false
     {
         if ($class === HTestEventController::class && $method === 'index') {
