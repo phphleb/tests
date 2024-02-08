@@ -104,6 +104,10 @@ Route::any('/dinamic-where-replace/method-controller/{first}/')
 Route::get('/test-variable/...0-3,5', 'VARIABLE=0-3,5');
 Route::get('/test-variable-require/level/...1,3-5,7', 'VARIABLE-REQUIRE=1,3-5,7');
 
+Route::toGroup()->prefix('/test-group-root-1/');
+    Route::get('/', 'SUCCESS-GET-GROUP-ROOT');
+Route::endGroup();
+
 // Защита маршрутов от CSRF.
 Route::get('/test-protect/get-method', 'SUCCESS-GET-TEXT')->protect();
 Route::toGroup()->protect();

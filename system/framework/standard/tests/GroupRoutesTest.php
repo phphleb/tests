@@ -285,4 +285,16 @@ class GroupRoutesTest extends TestCase
 
         $this->assertFalse($result);
     }
+
+    public function testRouteGroupRootV1(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-group-root-1';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'SUCCESS-GET-GROUP-ROOT';
+
+        $this->assertTrue($result);
+    }
 }
