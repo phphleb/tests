@@ -27,14 +27,19 @@ class ErrorLogTest extends TestCase
         ErrorLog::setLogger(new TestLogger());
     }
 
+
     public function testRunLogger(): void
     {
-        $this->assertTrue(str_starts_with($this->getLog(new \ErrorException('#1')), 'ERROR: #1'));
+        $result = $this->getLog(new \ErrorException('#1'));
+
+        $this->assertTrue(str_starts_with($result, 'WARNING: #1'));
     }
 
     public function testRunLogError(): void
     {
-        $this->assertTrue(str_starts_with($this->getBaseError(new \ErrorException('#1')), '#1'));
+        $result = $this->getBaseError(new \ErrorException('#1'));
+
+        $this->assertTrue(str_starts_with($result, '#1'));
     }
 
     private function getLog(\Throwable $t): string
@@ -49,11 +54,12 @@ class ErrorLogTest extends TestCase
 
     private function getBaseError(\Throwable $t): string
     {
+        $result = 'Undefined error';
         ob_start();
         try {
             ErrorLog::handle($t);
         } catch (\Throwable $e) {
-           $result = $e->getMessage();
+            $result = $e->getMessage();
         }
         ob_get_clean();
 
