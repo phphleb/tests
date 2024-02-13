@@ -22,7 +22,7 @@ class RequestRoutesTest extends TestCase
         'isGetMethod' => true,
         'session.value' => null,
         'session.data.value' => null,
-        'getParsedBody' => null,
+        'getParsedBody' => [],
         'getRawBody' => '',
         'getUrigetPath' => '/test-request/controller/get',
         'getUrigetHost' => 'site.com',
