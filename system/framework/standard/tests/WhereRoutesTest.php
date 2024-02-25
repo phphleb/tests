@@ -101,10 +101,58 @@ class WhereRoutesTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function testWhereRouteV7(): void
+    public function testTagRouteV1(): void
     {
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@name';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:name';
+
+        $this->assertTrue($result);
+    }
+
+    public function testTagRouteV2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/name';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:name';
+
+        $this->assertFalse($result);
+    }
+
+    public function testTagRouteV3(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@name/1';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:name';
+
+        $this->assertTrue($result);
+    }
+
+    public function testTagRouteV4(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@name/2';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:name';
+
+        $this->assertTrue($result);
+    }
+
+    public function testTagRouteV5(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@second';
         $params['SERVER']['REQUEST_METHOD'] = 'GET';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();

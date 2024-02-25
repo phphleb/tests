@@ -79,6 +79,17 @@ Route::get('/dinamic/where/user/name/@{first}')
     ->controller(HTest0DynamicValController::class, 'usingTemplate')
     ->where(['first' => '[a-z]+']);
 
+Route::get('/dinamic/where/user/name/@{first}/1')
+    ->controller(HTest0DynamicValController::class, 'usingTemplate')
+    ->where(['first' => '[a-z]+']);
+
+Route::get('/dinamic/where/user/name/@{first}/2')
+    ->controller(HTest0DynamicValController::class, 'usingTemplate')
+    ->where(['first' => '[a-z]+']);
+
+Route::get('/dinamic/where/user/name/@second')
+    ->controller(HTest0DynamicValController::class, 'usingTemplate');
+
 Route::get('/dinamic/where/full/regexp/{first}')
     ->controller(HTest0DynamicValController::class, 'usingTemplate')
     ->where(['first' => '/^[a-z]+$/i']);
