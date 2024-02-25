@@ -152,7 +152,7 @@ class WhereRoutesTest extends TestCase
     public function testTagRouteV5(): void
     {
         $params = $this->framework::DEFAULT_DATA;
-        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@second';
+        $params['SERVER']['REQUEST_URI'] = '/dinamic/where/user/name/@second/name';
         $params['SERVER']['REQUEST_METHOD'] = 'GET';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
