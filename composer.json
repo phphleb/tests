@@ -3,6 +3,9 @@
     "description": "Tests for framework HLEB2",
     "type": "library",
     "homepage": "https://hleb2framework.ru",
+    "keywords": [
+        "dev"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +15,7 @@
     ],
     "require": {
         "php": ">=8.2.0",
-        "phphleb/framework": "2.0.12",
+        "phphleb/framework": "2.0.13",
         "phphleb/test-o": "*",
         "phphleb/idnaconv": "*",
         "phphleb/psr-adapter": "*"
