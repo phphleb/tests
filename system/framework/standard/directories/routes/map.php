@@ -149,6 +149,13 @@ Route::toGroup()->where(['number' => '[0-9]+']);
     Route::get('/test-where-group/{number}/2', 'SUCCESS-WHERE-GROUP-TEXT-2');
 Route::endGroup();
 
+Route::toGroup()
+    ->prefix('/alternative-group')
+    ->group(function() {
+        Route::get('/test-where-group/1', 'SUCCESS-WHERE-ALTERNATIVE=GROUP-TEXT-1');
+        Route::get('/test-where-group/2', 'SUCCESS-WHERE-ALTERNATIVE=GROUP-TEXT-2');
+    });
+
 Route::toGroup()->prefix('/test-where-group/{number}')->where(['number' => '[0-9]+', 'position' => '[0-9]+']);
     Route::get('/in/{position}/1', 'SUCCESS-WHERE-GROUP-POSITION-1');
     Route::get('/in/{name}/2', 'SUCCESS-WHERE-GROUP-NAME-2')->where(['name' => '[a-z]+']);

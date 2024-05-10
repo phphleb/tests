@@ -142,6 +142,30 @@ class GroupRoutesTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testRouteAlternativeSyntaxV1(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/alternative-group/test-where-group/1';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'SUCCESS-WHERE-ALTERNATIVE=GROUP-TEXT-1';
+
+        $this->assertTrue($result);
+    }
+
+    public function testRouteAlternativeSyntaxV2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/alternative-group/test-where-group/2';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'SUCCESS-WHERE-ALTERNATIVE=GROUP-TEXT-2';
+
+        $this->assertTrue($result);
+    }
+
     public function testRouteGroupWhereMethodV1(): void
     {
         $params = $this->framework::DEFAULT_DATA;
