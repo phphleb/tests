@@ -17,8 +17,13 @@ class HTest0TaskAttributeController extends Controller
     public function disableOff(): string
     {
         $task = new AttributeDisableTask();
-        $status = $task->call();
-        $result = $task->getResult();
+        try {
+            $status = $task->call();
+            $result = $task->getResult();
+        } catch (\Throwable) {
+            $status = 1;
+            $result = null;
+        }
         return $result . '#' . $status;
     }
 
