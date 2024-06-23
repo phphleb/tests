@@ -21,7 +21,7 @@ class HTest0TaskAttributeController extends Controller
             $status = $task->call();
             $result = $task->getResult();
         } catch (\Throwable) {
-            $status = 1;
+            $status = true;
             $result = null;
         }
         return $result . '#' . $status;
