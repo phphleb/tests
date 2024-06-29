@@ -353,6 +353,14 @@ Route::get('/example-subsequence/controller/{num}')
 
 Route::get('/test-ending-empty/{param}/end?', 'TEST-ENDING-EMPTY');
 
+// Проверка дефолтных значений для динамического маршрута.
+Route::any('/test-defaults-1/{first}/{second:two}/{third:three}')
+    ->controller(HTest0DynamicValController::class, 'usingTemplate')
+    ->where(['first' => '[a-z0-9]+', 'second' => '[a-z]+']);
+
+Route::get('/test-defaults-2/{first}/{second:two}/{third:three?}')
+    ->controller(HTest0DynamicValController::class, 'usingTemplate')
+    ->where(['first' => '[a-z0-9]+', 'second' => '[a-z]+']);
 
 
 Route::any('set-route-version', 'v2');

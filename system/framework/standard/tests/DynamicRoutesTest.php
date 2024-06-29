@@ -140,4 +140,80 @@ class DynamicRoutesTest extends TestCase
         $this->assertTrue($result);
     }
 
+
+    /**
+     * Проверка динамических параметров с заданными значениями по умолчанию.
+     */
+    public function testDynamicDefaultsRoute1(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-defaults-1/variable1/two/three';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:variable1|two|three';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка динамических параметров с заданными значениями по умолчанию.
+     */
+    public function testDynamicDefaultsRoute2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-defaults-1/variable1/undefined/three';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:variable1|two|three';
+
+        $this->assertFalse($result);
+    }
+
+    /**
+     * Проверка динамических параметров с заданными значениями по умолчанию.
+     */
+    public function testDynamicDefaultsRoute3(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-defaults-1/variable1/two/three';
+        $params['SERVER']['REQUEST_METHOD'] = 'POST';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:variable1|two|three';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка динамических параметров с заданными значениями по умолчанию.
+     */
+    public function testDynamicDefaultsRoute4(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-defaults-2/variable1/two/three';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:variable1|two|three';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка динамических параметров с заданными значениями по умолчанию.
+     */
+    public function testDynamicDefaultsRoute5(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-defaults-2/variable1/two';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'DATA:variable1|two';
+
+        $this->assertTrue($result);
+    }
+
 }
