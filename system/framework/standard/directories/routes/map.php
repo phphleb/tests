@@ -351,4 +351,8 @@ Route::get('/example-subsequence/controller/{num}')
     ->controller('App\Controllers\HTest0ViewController@subsequence_<num>');
 
 
+Route::get('/test-ending-empty/{param}/end?', 'TEST-ENDING-EMPTY');
+
+
+
 Route::any('set-route-version', 'v2');

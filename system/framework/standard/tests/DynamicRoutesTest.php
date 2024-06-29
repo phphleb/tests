@@ -110,4 +110,34 @@ class DynamicRoutesTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * Проверка маршрута одновременно с динамической частью и нединамическим необязательным окончанием.
+     */
+    public function testEndingEmptyByDynamicRoute1(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-ending-empty/variable1/end';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'TEST-ENDING-EMPTY';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка маршрута одновременно с динамической частью и нединамическим необязательным окончанием.
+     */
+    public function testEndingEmptyByDynamicRoute2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-ending-empty/variable1';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'TEST-ENDING-EMPTY';
+
+        $this->assertTrue($result);
+    }
+
 }
