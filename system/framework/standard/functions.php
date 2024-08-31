@@ -5,3 +5,5 @@ if (!function_exists('hl_clear_tags')) {
         return $value;
     };
 }
+
+require_once __DIR__ . '/../../../../framework/Init/Review/functions.php';

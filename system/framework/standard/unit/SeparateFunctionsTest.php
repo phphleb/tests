@@ -11,6 +11,11 @@ use Phphleb\TestO\TestCase;
  */
 class SeparateFunctionsTest extends TestCase
 {
+    public function __construct()
+    {
+        require_once __DIR__ . '/../functions.php';
+    }
+
     public function testOnceFunction(): void
     {
         $counter = 0;
