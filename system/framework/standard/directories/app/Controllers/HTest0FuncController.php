@@ -19,7 +19,7 @@ class HTest0FuncController extends Controller
 
       public function getConfig(): int
       {
-          return (int)hl_config('debug');
+          return (int)hl_config('common', 'debug');
       }
 
     public function getParam(): ?string
