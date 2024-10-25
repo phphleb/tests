@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=8.2.0",
-        "phphleb/framework": "2.0.32",
+        "phphleb/framework": "2.0.33",
         "phphleb/test-o": "*",
         "phphleb/idnaconv": "*",
         "phphleb/psr-adapter": "*"
