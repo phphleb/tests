@@ -28,8 +28,4 @@ class MockContainerCsrf implements CsrfInterface
     {
         return true;
     }
-
-    #[\Override] public static function rollback(): void
-    {
-    }
 }
