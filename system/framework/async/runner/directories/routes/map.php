@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\HTest0AsyncRollbackController;
 use App\Controllers\HTest0AsyncSessionController;
 
 // Базовая проверка асинхронного запроса.
@@ -13,3 +14,6 @@ Route::get('/test-cookies/controller/')->controller(HTest0AsyncSessionController
 
 // Проверка на последовательность вывода
 Route::get('/example-subsequence/controller/{num}')->controller('App\Controllers\HTest0AsyncViewController@subsequence_<num>');
+
+// Проверка COOKIES
+Route::get('/test-rollback/controller/{level}')->controller(HTest0AsyncRollbackController::class, 'check');
