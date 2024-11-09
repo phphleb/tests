@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Get2_f077fbba71012
+final class HL2Get8_1ccce67ad1244
 {
     /**
     * @internal
@@ -24,15 +24,15 @@ final class HL2Get2_f077fbba71012
           'OPTIONS',
       ],
       'data' =>  [
-          'route' => 'test-session/controller',
+          'route' => 'example-subsequence/controller/{num}',
           'view' => null,
       ],
       'actions' =>  [],
-      'full-address' => 'test-session/controller',
+      'full-address' => 'example-subsequence/controller/{num}',
       'controller' =>  [
           'method' => 'controller',
-          'class' => 'App\Controllers\HTest0AsyncSessionController',
-          'class-method' => 'setSession',
+          'class' => 'App\Controllers\HTest0AsyncViewController',
+          'class-method' => 'subsequence_<num>',
       ],
   ];
 

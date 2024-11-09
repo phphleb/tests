@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Get6_f077fbba71012
+final class HL2Options6_1ccce67ad1244
 {
     /**
     * @internal
@@ -24,15 +24,15 @@ final class HL2Get6_f077fbba71012
           'OPTIONS',
       ],
       'data' =>  [
-          'route' => 'example-subsequence/controller/{num}',
+          'route' => 'test-cookies/controller',
           'view' => null,
       ],
       'actions' =>  [],
-      'full-address' => 'example-subsequence/controller/{num}',
+      'full-address' => 'test-cookies/controller',
       'controller' =>  [
           'method' => 'controller',
-          'class' => 'App\Controllers\HTest0AsyncViewController',
-          'class-method' => 'subsequence_<num>',
+          'class' => 'App\Controllers\HTest0AsyncSessionController',
+          'class-method' => 'setCookies',
       ],
   ];
 

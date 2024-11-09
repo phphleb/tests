@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Options8_f077fbba71012
+final class HL2Get10_1ccce67ad1244
 {
     /**
     * @internal

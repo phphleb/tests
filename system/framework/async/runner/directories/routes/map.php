@@ -9,6 +9,8 @@ Route::get('/test/', 'ASYNC-SUCCESS');
 // Проверка сессий
 Route::get('/test-session/controller/')->controller(HTest0AsyncSessionController::class, 'setSession');
 
+Route::get('/test-extended-session/controller/{num}')->controller(HTest0AsyncSessionController::class, '<num>');
+
 // Проверка COOKIES
 Route::get('/test-cookies/controller/')->controller(HTest0AsyncSessionController::class, 'setCookies');
 

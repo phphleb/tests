@@ -38,6 +38,7 @@ class RrBaseSessionTest extends TestCase
         $commonBody = implode('|', $this->frame->handler($response, 'body'));
         $isCode200 = $this->frame->checkCode200($response);
         $originSession = json_encode([['test' => 'value', 'test-external-on' => 1], ['test-external-on' => 1], null]);
+
         $isSessionData = $originSession === json_encode($this->frame->handler($response, 'session'));               
         $originBody = $commonBody === $this->frame->getRepeatVal('EXT-SESSION-SUCCESS', 3);
 
@@ -69,8 +70,72 @@ class RrBaseSessionTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testAsyncIncrementV1(): void
+    {
+        $data = [
+            $this->getWithSession([], url: '/test-extended-session/controller/increment1V1'),
+            $this->getWithSession(['increment-2' => 7], url: '/test-extended-session/controller/increment1V2'),
+            $this->getWithSession([], url: '/test-extended-session/controller/increment1V3'),
+        ];
 
-    private function getWithSession(?array $sessionData = null, ?string $sessionId = null)
+        $response = $this->frame->run($data);
+
+        $commonBody = implode('|', $this->frame->handler($response, 'body'));
+        $isCode200 = $this->frame->checkCode200($response);
+        $originBody = $commonBody === 'EXT-INCR-1-SUCCESS:1=1|EXT-INCR-2-SUCCESS:1=:2=9|EXT-INCR-3-SUCCESS:1=3';
+
+        $this->frame->checkErrors($response);
+        $result = $originBody && $isCode200;
+
+        $this->assertTrue($result);
+    }
+
+    public function testAsyncDecrementV1(): void
+    {
+        $data = [
+            $this->getWithSession([], url: '/test-extended-session/controller/decrement1V1'),
+            $this->getWithSession(['decrement-2' => 7], url: '/test-extended-session/controller/decrement1V2'),
+        ];
+
+        $response = $this->frame->run($data);
+
+        $commonBody = implode('|', $this->frame->handler($response, 'body'));
+
+        $isCode200 = $this->frame->checkCode200($response);
+        $originBody = $commonBody === 'EXT-DECR-1-SUCCESS:1=-1|EXT-DECR-2-SUCCESS:1=:2=5';
+
+        $this->frame->checkErrors($response);
+        $result = $originBody && $isCode200;
+
+        $this->assertTrue($result);
+    }
+
+    public function testAsyncCounterV1(): void
+    {
+        $data = [
+            $this->getWithSession([], url: '/test-extended-session/controller/counter1V1'),
+            $this->getWithSession(['counter-1' => 100], url: '/test-extended-session/controller/counter1V2'),
+        ];
+
+        $response = $this->frame->run($data);
+
+        $commonBody = implode('|', $this->frame->handler($response, 'body'));
+
+        $isCode200 = $this->frame->checkCode200($response);
+        $originBody = $commonBody === 'EXT-CNTR-1-SUCCESS:1=5|EXT-CNTR-2-SUCCESS:1=98';
+
+        $this->frame->checkErrors($response);
+        $result = $originBody && $isCode200;
+
+        $this->assertTrue($result);
+    }
+
+
+    private function getWithSession(
+        ?array $sessionData = null,
+        ?string $sessionId = null,
+        string $url = '/test-session/controller',
+    )
     {
         $result = $this->frame::DEFAULT_DATA;
         if (!is_null($sessionId)) {
@@ -79,7 +144,7 @@ class RrBaseSessionTest extends TestCase
         if (!is_null($sessionData)) {
             $result['session'] = $sessionData;
         }
-        $result['uri']['path'] = '/test-session/controller';
+        $result['uri']['path'] = $url;
 
         return $result;
     }

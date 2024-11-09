@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Info_f077fbba71012
+final class HL2Info_1ccce67ad1244
 {
     /**
     * @internal
@@ -27,7 +27,7 @@ final class HL2Info_f077fbba71012
       'has_modules' => 0,
       'has_pages' => 0,
       'has_plain' => 0,
-      'time' => 1730724628,
+      'time' => 1731078337,
       'update_status' => 0,
   ];
 

@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Get8_f077fbba71012
+final class HL2Get1_1ccce67ad1244
 {
     /**
     * @internal
@@ -24,16 +24,11 @@ final class HL2Get8_f077fbba71012
           'OPTIONS',
       ],
       'data' =>  [
-          'route' => 'test-rollback/controller/{level}',
-          'view' => null,
+          'route' => 'test',
+          'view' => 'ASYNC-SUCCESS',
       ],
       'actions' =>  [],
-      'full-address' => 'test-rollback/controller/{level}',
-      'controller' =>  [
-          'method' => 'controller',
-          'class' => 'App\Controllers\HTest0AsyncRollbackController',
-          'class-method' => 'check',
-      ],
+      'full-address' => 'test',
   ];
 
 

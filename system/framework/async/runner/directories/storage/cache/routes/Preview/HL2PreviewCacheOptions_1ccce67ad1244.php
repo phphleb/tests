@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2PreviewCacheGet_f077fbba71012
+final class HL2PreviewCacheOptions_1ccce67ad1244
 {
     /**
     * @internal
@@ -29,19 +29,25 @@ final class HL2PreviewCacheGet_f077fbba71012
           'f' => 'test-session',
       ],
        [
-          'a' => 'test-cookies/controller',
+          'a' => 'test-extended-session/controller/{num}',
           'k' => 4,
+          'f' => 'test-extended-session',
+          'd' => 1,
+      ],
+       [
+          'a' => 'test-cookies/controller',
+          'k' => 6,
           'f' => 'test-cookies',
       ],
        [
           'a' => 'example-subsequence/controller/{num}',
-          'k' => 6,
+          'k' => 8,
           'f' => 'example-subsequence',
           'd' => 1,
       ],
        [
           'a' => 'test-rollback/controller/{level}',
-          'k' => 8,
+          'k' => 10,
           'f' => 'test-rollback',
           'd' => 1,
       ],

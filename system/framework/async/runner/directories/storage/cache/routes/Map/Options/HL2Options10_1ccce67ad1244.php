@@ -11,7 +11,7 @@ declare(strict_types=1);
 /**
 * @internal
 */
-final class HL2Options4_f077fbba71012
+final class HL2Options10_1ccce67ad1244
 {
     /**
     * @internal
@@ -24,15 +24,15 @@ final class HL2Options4_f077fbba71012
           'OPTIONS',
       ],
       'data' =>  [
-          'route' => 'test-cookies/controller',
+          'route' => 'test-rollback/controller/{level}',
           'view' => null,
       ],
       'actions' =>  [],
-      'full-address' => 'test-cookies/controller',
+      'full-address' => 'test-rollback/controller/{level}',
       'controller' =>  [
           'method' => 'controller',
-          'class' => 'App\Controllers\HTest0AsyncSessionController',
-          'class-method' => 'setCookies',
+          'class' => 'App\Controllers\HTest0AsyncRollbackController',
+          'class-method' => 'check',
       ],
   ];
 
