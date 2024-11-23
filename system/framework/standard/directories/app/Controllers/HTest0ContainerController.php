@@ -366,9 +366,9 @@ class HTest0ContainerController extends Controller
 
     public function actionService002(): string
     {
-        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, new \DateTimeImmutable());
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeZone::class, new \DateTimeZone('Europe/Moscow'));
 
-        return (string)$this->checkItems([\DateTimeInterface::class, \DateTimeImmutable::class]);
+        return (string)$this->checkItems([\DateTimeZone::class, \DateTimeZone::class]);
     }
 
     public function actionService003(): string
