@@ -556,4 +556,49 @@ class ContainerTest extends TestCase
 
         $this->assertTrue($result === '1');
     }
+
+    public function testServiceContainerV1(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/service/001';
+        $result = $this->framework->run($params);
+
+        $this->assertTrue($result === '1');
+    }
+
+    public function testServiceContainerV2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/service/002';
+        $result = $this->framework->run($params);
+
+        $this->assertTrue($result === '1');
+    }
+
+    public function testServiceContainerV3(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/service/003';
+        $result = $this->framework->run($params);
+
+        $this->assertTrue($result === '1');
+    }
+
+    public function testServiceContainerV4(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/service/004';
+        $result = $this->framework->run($params);
+
+        $this->assertTrue($result === '1');
+    }
+
+    public function testServiceContainerV5(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/service/005';
+        $result = $this->framework->run($params);
+
+        $this->assertTrue($result === '1');
+    }
 }

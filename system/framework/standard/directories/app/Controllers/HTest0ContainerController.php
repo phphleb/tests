@@ -357,6 +357,43 @@ class HTest0ContainerController extends Controller
         return (string)$this->checkItems([TemplateInterface::class, Template::class]);
     }
 
+
+
+    public function actionService001(): string
+    {
+        return (string)$this->checkItems([\DateTime::class, \DateTime::class]);
+    }
+
+    public function actionService002(): string
+    {
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTimeImmutable::class);
+
+        return (string)$this->checkItems([\DateTimeInterface::class, \DateTimeImmutable::class]);
+    }
+
+    public function actionService003(): string
+    {
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTime::class);
+
+        return \Hleb\Static\Container::has(\DateTimeInterface::class) ? '1' : '0';
+    }
+
+    public function actionService004(): string
+    {
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTime::class);
+
+        return (string)$this->checkItems([\DateTimeInterface::class, \DateTime::class]);
+    }
+
+    public function actionService005(): string
+    {
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateInterval::class, function() {
+            return \DateInterval::createFromDateString('1 day');
+        });
+
+        return (string)$this->checkItems([\DateInterval::class, \DateInterval::class]);
+    }
+
     public function checkItems(array $tags): bool
     {
         return $this->container->get($tags[0])::class === $this->container->get($tags[1])::class;
