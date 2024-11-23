@@ -366,21 +366,21 @@ class HTest0ContainerController extends Controller
 
     public function actionService002(): string
     {
-        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTimeImmutable::class);
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, new \DateTimeImmutable());
 
         return (string)$this->checkItems([\DateTimeInterface::class, \DateTimeImmutable::class]);
     }
 
     public function actionService003(): string
     {
-        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTime::class);
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, new \DateTime());
 
         return \Hleb\Static\Container::has(\DateTimeInterface::class) ? '1' : '0';
     }
 
     public function actionService004(): string
     {
-        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, \DateTime::class);
+        \App\Bootstrap\ContainerFactory::setSingleton(\DateTimeInterface::class, new \DateTime());
 
         return (string)$this->checkItems([\DateTimeInterface::class, \DateTime::class]);
     }
