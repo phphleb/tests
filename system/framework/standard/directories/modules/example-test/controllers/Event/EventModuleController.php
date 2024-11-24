@@ -6,7 +6,7 @@ use Hleb\Base\Module;
 
 class EventModuleController extends Module
 {
-    public function index(\DateTime $time, string $test = 'default', string $constructTime = null, ?string $module = null): array
+    public function index(\DateTime $time, string $test = 'default', ?string $constructTime = null, ?string $module = null): array
     {
         return [
             'time' => $time->format('Y-m-d'),

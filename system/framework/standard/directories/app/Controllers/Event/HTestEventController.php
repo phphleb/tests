@@ -10,7 +10,7 @@ use Hleb\Reference\RequestInterface;
 // Проверка Event для контроллера.
 class HTestEventController extends Controller
 {
-    public function index(\DateTime $time, string $test = 'default', string $constructTime = null): array
+    public function index(\DateTime $time, string $test = 'default', ?string $constructTime = null): array
     {
         return [
             'time' => $time->format('Y-m-d'),
