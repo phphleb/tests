@@ -364,3 +364,13 @@ Route::get('/test-defaults-2/{first}/{second:two}/{third:three?}')
 
 
 Route::any('set-route-version', 'v2');
+
+Route::any(
+     '/test-route-preview/text/{name}/{value?}',
+     preview('ROUTE:{{route}}_PARAM[NAME]:{%name%}_PARAM[VALUE]:{%value%}_METHOD:{{method}}')
+);
+
+Route::any(
+    '/test-route-preview/json/{name}/{value?}',
+    preview('{"route": "{{route}}", "name": "{%name%}", "value": "{%value%}", "method": "{{method}}"}')
+);
