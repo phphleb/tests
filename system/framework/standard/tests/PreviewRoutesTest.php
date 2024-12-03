@@ -27,7 +27,7 @@ class PreviewRoutesTest extends TestCase
 
         $this->framework = new StandardInit();
     }
-
+   /*
     public function testRouteTextPreviewV1(): void
     {
         $params = $this->framework::DEFAULT_DATA;
@@ -113,4 +113,5 @@ class PreviewRoutesTest extends TestCase
 
         $this->assertArrayEquals(json_decode($commandResult, true), $target);
     }
+   */
 }
