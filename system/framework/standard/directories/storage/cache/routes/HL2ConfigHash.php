@@ -1,6 +1,5 @@
 <?php
 
-namespace Phphleb\directories\storage\cache\routes;
 /**
  * This class is generated automatically. It will be changed during the update.
  *
