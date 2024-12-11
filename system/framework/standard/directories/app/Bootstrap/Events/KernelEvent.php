@@ -2,9 +2,10 @@
 
 namespace App\Bootstrap\Events;
 
+use Hleb\Base\Event;
 use Hleb\Reference\Interface\Request;
 
-class KernelEvent
+class KernelEvent  extends Event
 {
     public function __construct(private readonly Request $request)
     {
