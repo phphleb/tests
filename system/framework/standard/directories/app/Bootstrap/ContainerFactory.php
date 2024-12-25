@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Bootstrap;
 
+use App\Bootstrap\Services\AuthowireTest1;
+use App\Bootstrap\Services\AuthowireTest2;
+use App\Bootstrap\Services\AutowireTestInterface;
 use DateTime;
 use Hleb\Constructor\Attributes\Dependency;
 use Hleb\Constructor\Containers\BaseContainerFactory;
@@ -16,9 +19,15 @@ final class ContainerFactory  extends BaseContainerFactory
     {
         self::has($id) or self::$singletons[$id] = match ($id) {
             DateTime::class => new DateTime(),
+
+            AutowireTestInterface::class => new AuthowireTest1(),
+            AuthowireTest2::class => new AuthowireTest2(),
+
             default => null
         };
         self::register(DateTime::class);
+        self::register(AutowireTestInterface::class);
+        self::register(AuthowireTest2::class);
 
         if (is_callable(self::$singletons[$id])) {
             self::$singletons[$id] = self::$singletons[$id]();

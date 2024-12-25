@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Bootstrap\Services\AuthowireTest2;
+use App\Bootstrap\Services\AuthowireTest3;
+use App\Bootstrap\Services\AuthowireTest4;
+use App\Bootstrap\Services\AuthowireTest5;
+use App\Bootstrap\Services\AutowireTestInterface;
 use App\Commands\ContainerTestTask;
 use App\Models\TestModel;
 use Hleb\Base\Controller;
+use Hleb\Constructor\Attributes\Autowiring\DI;
 use Hleb\Constructor\Data\View;
 use Hleb\Reference\ArrInterface;
 use Hleb\Reference\CacheInterface;
@@ -392,6 +398,72 @@ class HTest0ContainerController extends Controller
         });
 
         return (string)$this->checkItems([\DateInterval::class, \DateInterval::class]);
+    }
+
+    public function actionDiAutowire001(AutowireTestInterface $autowire, Setting $setting): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+
+    public function actionDiAutowire002(
+        #[DI(AuthowireTest2::class)]
+        AutowireTestInterface $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire003(
+        #[DI(AuthowireTest3::class)]
+        AutowireTestInterface $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire004(
+        #[DI(AuthowireTest4::class)]
+        AutowireTestInterface $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire005(
+        #[DI(AuthowireTest5::class)]
+        AutowireTestInterface $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire063(
+        AuthowireTest3 $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire064(
+        AuthowireTest4 $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
+    }
+
+    public function actionDiAutowire065(
+        AuthowireTest5 $autowire,
+        Setting $setting
+    ): string
+    {
+        return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
     }
 
     public function checkItems(array $tags): bool

@@ -6,9 +6,7 @@ declare(strict_types=1);
 * This class is generated automatically. It will be changed during the update.
 * 
 * Этот класс сгенерирован автоматически. Он будет изменён при обновлении.
-*/
-
-/**
+* 
 * @internal
 */
 final class HL2Post273_837c8d6ef41993

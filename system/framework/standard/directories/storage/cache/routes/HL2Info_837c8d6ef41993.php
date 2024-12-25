@@ -6,9 +6,7 @@ declare(strict_types=1);
 * This class is generated automatically. It will be changed during the update.
 * 
 * Этот класс сгенерирован автоматически. Он будет изменён при обновлении.
-*/
-
-/**
+* 
 * @internal
 */
 final class HL2Info_837c8d6ef41993
@@ -27,7 +25,7 @@ final class HL2Info_837c8d6ef41993
       'has_modules' => 1,
       'has_pages' => 0,
       'has_plain' => 0,
-      'time' => 1733058412,
+      'time' => 1735116268,
       'update_status' => 0,
   ];
 
