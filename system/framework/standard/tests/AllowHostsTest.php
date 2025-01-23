@@ -49,7 +49,7 @@ class AllowHostsTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/';
         $config = $this->framework::DEFAULT_CONFIG;
-        $config['common']['allowed.host'] = ['x.com', '/^site\.com$/', 'y.com'];
+        $config['common']['allowed.host'] = ['x.com', '/site\.com/', 'y.com'];
         $commandResult = $this->framework->run($params, $config);
         $status = $this->framework->getStatus();
 
