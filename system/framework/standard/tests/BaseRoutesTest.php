@@ -96,6 +96,70 @@ class BaseRoutesTest extends TestCase
     }
 
     /**
+     * Проверка принудительно измененного метода DELETE из формы.
+     */
+    public function testForceMethodDeleteRoute(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/example/test';
+        $params['SERVER']['REQUEST_METHOD'] = 'POST';
+        $params['POST']['_method'] = 'DELETE';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'EXAMPLE-DELETE';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка принудительно измененного метода DELETE(в нижнем регистре) из формы.
+     */
+    public function testForceMethodLowerDeleteRoute(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/example/test';
+        $params['SERVER']['REQUEST_METHOD'] = 'POST';
+        $params['POST']['_method'] = 'delete';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'EXAMPLE-DELETE';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка принудительно измененного метода PATCH из формы.
+     */
+    public function testForceMethodPatchRoute(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/example/test';
+        $params['SERVER']['REQUEST_METHOD'] = 'POST';
+        $params['POST']['_method'] = 'PATCH';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'EXAMPLE-PATCH';
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Проверка принудительно измененного метода PUT из формы.
+     */
+    public function testForceMethodPutRoute(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/example/test';
+        $params['SERVER']['REQUEST_METHOD'] = 'POST';
+        $params['POST']['_method'] = 'PUT';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'EXAMPLE-PUT';
+
+        $this->assertTrue($result);
+    }
+
+    /**
      * Проверка отображения шаблона из маршрута.
      */
     public function testViewInRoute(): void
