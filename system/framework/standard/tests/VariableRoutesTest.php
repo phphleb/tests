@@ -224,4 +224,52 @@ class VariableRoutesTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testVariableRouteV18(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-variable-data/raw/p1/p2/p3';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === "[0:raw,1:p1,2:p2,3:p3]";
+
+        $this->assertTrue($result);
+    }
+
+    public function testVariableRouteV19(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-variable-data/object/p1/p2/p3';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === "[0:object,1:p1,2:p2,3:p3]";
+
+        $this->assertTrue($result);
+    }
+
+    public function testVariableRouteV20(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-variable-data/container/p1/p2/p3';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === "[0:container,1:p1,2:p2,3:p3]";
+
+        $this->assertTrue($result);
+    }
+
+    public function testVariableRouteV21(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-variable-url/p0/p1/p2/p3';
+        $params['SERVER']['REQUEST_METHOD'] = 'GET';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === "/test-variable-url/part1/part2";
+
+        $this->assertTrue($result);
+    }
+
 }

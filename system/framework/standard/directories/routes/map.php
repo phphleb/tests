@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\Dir\Post\H2bTest0VariableParamController;
 use App\Controllers\HTest0BaseController;
 use App\Controllers\HTest0DynamicValController;
 use App\Controllers\Dir\Post\H2bTest0DynamicParamController;
@@ -115,6 +116,8 @@ Route::any('/dinamic-where-replace/method-controller/{first}/')
 // Тестирование вариативных маршрутов.
 Route::get('/test-variable/...0-3,5', 'VARIABLE=0-3,5');
 Route::get('/test-variable-require/level/...1,3-5,7', 'VARIABLE-REQUIRE=1,3-5,7');
+Route::get('/test-variable-data/...0-6')->controller(H2bTest0VariableParamController::class, 'data');
+Route::get('/test-variable-url/...0-6')->controller(H2bTest0VariableParamController::class, 'url')->name('test.variable.url');
 
 Route::toGroup()->prefix('/test-group-root-1/');
     Route::get('/', 'SUCCESS-GET-GROUP-ROOT');
