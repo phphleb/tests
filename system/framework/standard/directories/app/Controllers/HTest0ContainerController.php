@@ -466,6 +466,14 @@ class HTest0ContainerController extends Controller
         return 'HL_AUTOWIRE_DI_' . $autowire->getTag() . '_MODE_' . $setting->getParam('system', 'autowiring.mode');
     }
 
+    public function actionDiAutowire070(
+        #[\Hleb\Constructor\Attributes\Autowiring\Config('system', 'autowiring.config.enabled')]
+         string $param
+    ): string
+    {
+        return 'HL_AUTOWIRE_CONFIG_' . $param;
+    }
+
     public function checkItems(array $tags): bool
     {
         return $this->container->get($tags[0])::class === $this->container->get($tags[1])::class;

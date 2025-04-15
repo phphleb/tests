@@ -625,4 +625,15 @@ class AutowiringTest extends TestCase
 
         $this->assertFalse($this->framework->run($params, $config) === 'HL_AUTOWIRE_DI_5_MODE_3');
     }
+
+    public function testDIAutowiringV70(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $config = $this->framework::DEFAULT_CONFIG;
+
+        $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/070';
+        $config['system']['autowiring.config.enabled'] = 'on';
+
+        $this->assertTrue($this->framework->run($params, $config) === 'HL_AUTOWIRE_CONFIG_on');
+    }
 }
