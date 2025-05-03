@@ -25,7 +25,7 @@ final class HL2Info_e08573c3c1513
       'has_modules' => 1,
       'has_pages' => 0,
       'has_plain' => 0,
-      'time' => 1735116264,
+      'time' => 1746255130,
       'update_status' => 0,
   ];
 
