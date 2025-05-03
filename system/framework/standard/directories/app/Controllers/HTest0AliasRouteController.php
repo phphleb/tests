@@ -25,11 +25,11 @@ class HTest0AliasRouteController extends Controller
 
     public function action4(int $id): string
     {
-        return url('test.alias.origin.2', ['id' => $id]);
+        return url('test.alias.origin.2', ['id' => (string)$id]);
     }
 
     public function action5(int $id): string
     {
-        return url('test.alias.3', ['id' => $id]);
+        return url('test.alias.3', ['id' => (string)$id]);
     }
 }

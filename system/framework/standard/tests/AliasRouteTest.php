@@ -90,8 +90,6 @@ class AliasRouteTest extends TestCase
         $params['SERVER']['REQUEST_URI'] = '/alias-origin-2/4';
         $commandResult = $this->framework->run($params);
 
-        var_dump($commandResult);
-
         $this->assertTrue($commandResult === 'ALIAS-M8E_/alias-origin-2/4');
     }
 
@@ -100,8 +98,6 @@ class AliasRouteTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/prefix/alias-3/5';
         $commandResult = $this->framework->run($params);
-
-        var_dump($commandResult);
 
         $this->assertTrue($commandResult === 'ALIAS-M8E_ALIAS-M8E_/prefix/alias-3/5');
     }
