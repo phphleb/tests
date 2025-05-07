@@ -21,7 +21,7 @@ final class ContainerFactory  extends BaseContainerFactory
             DateTime::class => new DateTime(),
 
             AutowireTestInterface::class => new AuthowireTest1(),
-            AuthowireTest2::class => new AuthowireTest2(),
+            AuthowireTest2::class => self::getLazyObject(AuthowireTest2::class),
 
             default => null
         };
@@ -29,7 +29,7 @@ final class ContainerFactory  extends BaseContainerFactory
         self::register(AutowireTestInterface::class);
         self::register(AuthowireTest2::class);
 
-        if (is_callable(self::$singletons[$id])) {
+        if (self::$singletons[$id] instanceof \Closure) {
             self::$singletons[$id] = self::$singletons[$id]();
         }
 
@@ -37,7 +37,7 @@ final class ContainerFactory  extends BaseContainerFactory
     }
 
     #[\Override]
-    public static function setSingleton(string $id, object|callable|null $value): void
+    public static function setSingleton(string $id, object|null $value): void
      {
         parent::setSingleton($id, $value);
      }
