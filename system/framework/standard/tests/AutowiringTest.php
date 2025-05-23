@@ -29,7 +29,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/001';
 
-        $this->assertEquals($this->framework->run($params), 'HL_AUTOWIRE_DI_1_MODE_');
+        $this->assertEquals($this->framework->run($params), 'HL_AUTOWIRE_DI_1_MODE_0');
     }
 
     /**
@@ -101,7 +101,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/002';
 
-        $this->assertEquals($this->framework->run($params), 'HL_AUTOWIRE_DI_2_MODE_');
+        $this->assertEquals($this->framework->run($params), 'HL_AUTOWIRE_DI_2_MODE_0');
     }
 
     /**
@@ -174,7 +174,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/003';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_3_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_3_MODE_0');
     }
 
     /**
@@ -251,7 +251,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/004';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_4_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_4_MODE_0');
     }
 
     /**
@@ -328,7 +328,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/005';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_5_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_5_MODE_0');
     }
 
     /**
@@ -405,7 +405,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/063';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_3_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_3_MODE_0');
     }
 
     /**
@@ -482,7 +482,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/064';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_4_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_4_MODE_0');
     }
 
     /**
@@ -559,7 +559,7 @@ class AutowiringTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-container/controller/di-autowire/065';
 
-        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_5_MODE_');
+        $this->assertTrue($this->framework->run($params) === 'HL_AUTOWIRE_DI_5_MODE_0');
     }
 
     /**
