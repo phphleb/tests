@@ -191,7 +191,7 @@ class ResponseTest extends TestCase
         $params['SERVER']['REQUEST_URI'] = '/test-controller-response/9';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
-        $result = $status && $commandResult === 'INIT_TEST_9';
+        $result = $status && $commandResult === 'INITTEST_9';
 
         $this->assertTrue($result);
     }
