@@ -1,6 +1,8 @@
 <?php
 // Автозагрузчик для раздела с асинхронным тестированием фреймворка.
 
+use App\ResetItem;
+use App\ResetItemWithConstructor;
 use Phphleb\Tests\AsyncLogger\AsyncLoggerTestException;
 use Phphleb\Tests\AsyncLogger\TestLogger;
 use Phphleb\Tests\RoadRunnerRequestFabric;
@@ -24,6 +26,8 @@ if (!function_exists('async_autoloader')) {
             HlebAsyncBootstrap::class => $vendorDir . '/phphleb/framework/HlebAsyncBootstrap.php',
             LoggerInterface::class => $vendorDir . '/phphleb/framework/Main/Logger/LoggerInterface.php',
             SwooleRequestFabric::class => __DIR__ . '/SwooleRequestFabric.php',
+            ResetItem::class => __DIR__ . '/directories/app/ResetItem.php',
+            ResetItemWithConstructor::class => __DIR__ . '/directories/app/ResetItemWithConstructor.php',
             SwooleHttpServerRequest::class => __DIR__ . '/../SwooleHttpServerRequest.php',
             RoadRunnerInit::class => __DIR__ . '/RoadRunnerInit.php',
             SwooleInit::class => __DIR__ . '/SwooleInit.php',
