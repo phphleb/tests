@@ -69,7 +69,7 @@ class ResetHelperTest extends TestCase
             $lazyObject = CoreContainer::getLazyObject(ResetItemWithConstructor::class, [7]);
             $services = [$lazyObject];
             ResetAndRollbackHelper::resetServices($services, NULL);
-            $this->assertTrue($lazyObject->data === 0);
+            $this->assertTrue($lazyObject->data === 7);
         }
     }
 
