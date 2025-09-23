@@ -46,13 +46,15 @@ class ConsoleInit
      * Выполнение определенной консольной команды.
      * Возвращает статус успешности выполнения.
      */
-    public function runCli(string $command, array $arguments = []): bool
+    public function runCli(string $command, array $arguments = [], bool $isMinimal = false): bool
     {
         $argv = implode(' ', $arguments);
 
+        $name = $isMinimal ? 'init-min' : 'init';
+
         $dir = __DIR__;
         ob_start();
-        passthru("php $dir/init.php $command $argv", $resultCode);
+        passthru("php $dir/$name.php $command $argv", $resultCode);
 
         $this->code = $resultCode;
 
