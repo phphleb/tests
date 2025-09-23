@@ -10,7 +10,7 @@ use Phphleb\Tests\ConsoleInit;
 /**
  * Тестирование возвращаемых ошибок.
  */
-class MinimalConfigTest extends TestCase
+class MinimalConsoleConfigTest extends TestCase
 {
     private ConsoleInit $console;
 
