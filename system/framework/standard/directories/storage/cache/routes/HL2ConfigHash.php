@@ -9,5 +9,5 @@
 final class HL2ConfigHash
 {  
    /** @internal */
-   public const HASH = 'a01c92cab43628';
+   public const HASH = '861f3b51e51692';
 }
