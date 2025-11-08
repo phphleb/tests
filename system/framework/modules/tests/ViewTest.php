@@ -23,10 +23,43 @@ class ViewTest extends TestCase
     public function testModuleConfigV1(): void
     {
         $params = $this->framework::DEFAULT_DATA;
-        $params['SERVER']['REQUEST_URI'] = '/test-config';
+        $params['SERVER']['REQUEST_URI'] = '/test-config?p=1';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'products.test';
+
+        $this->assertTrue($result);
+    }
+
+    public function testModuleConfigV2(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-config?p=main';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'replace_var';
+
+        $this->assertTrue($result);
+    }
+
+    public function testModuleConfigV3(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-config?p=custom';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'replace_var/replace_var/100/str101';
+
+        $this->assertTrue($result);
+    }
+
+    public function testModuleConfigV4(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-config?p=override';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === 'replace_in_module_replace_var';
 
         $this->assertTrue($result);
     }

@@ -34,6 +34,9 @@ return [
     'page.external.access' => true,
 
     'module.dir.name' => 'products',
-    'custom.setting.files' => [],
+
+    'custom.setting.files' => [
+        'custom' => '/config/custom.php',
+    ],
     'custom.function.files' => [],
 ];

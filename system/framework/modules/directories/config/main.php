@@ -10,4 +10,10 @@ return [
     'db.log.enabled' => true,
 
     'session.options' => [],
+
+    'replace.var' => 'replace_var',
+
+    'replace.temp' => '{%replace.var%}',
+
+    'override.var' => 'version_1',
 ];
