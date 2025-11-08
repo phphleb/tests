@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phphleb\tests\system\framework\modules\tests;
+namespace Phphleb\Tests;
 
 use Phphleb\TestO\TestCase;
-use Phphleb\Tests\StandardModuleInit;
 
 class ViewTest extends TestCase
 {
@@ -35,6 +34,7 @@ class ViewTest extends TestCase
     {
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-config?p=main';
+        $params['GET']['p'] = 'main';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'replace_var';
@@ -46,6 +46,7 @@ class ViewTest extends TestCase
     {
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-config?p=custom';
+        $params['GET']['p'] = 'custom';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'replace_var/replace_var/100/str101';
@@ -57,6 +58,7 @@ class ViewTest extends TestCase
     {
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/test-config?p=override';
+        $params['GET']['p'] = 'override';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'replace_in_module_replace_var';

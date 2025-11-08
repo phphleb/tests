@@ -18,6 +18,12 @@ try {
         foreach ($params['SERVER'] ?? [] as $key => $value) {
             $_SERVER[$key] = $value;
         }
+        if ($params['GET']) {
+            $_GET = $params['GET'];
+        }
+        if ($params['POST']) {
+            $_GET = $params['POST'];
+        }
     }
 
     if (!class_exists(HlebBootstrap::class)) {
