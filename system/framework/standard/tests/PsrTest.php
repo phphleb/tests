@@ -25,7 +25,6 @@ class PsrTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/psr/controller/logger/1';
         $commandResult = $this->framework->run($params);
-        var_dump($commandResult);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'Phphleb\PsrAdapter\Psr3\Logger';
 
@@ -37,7 +36,6 @@ class PsrTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/psr/controller/logger/2';
         $commandResult = $this->framework->run($params);
-        var_dump($commandResult);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'true';
 
@@ -49,7 +47,6 @@ class PsrTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/psr/controller/container/1';
         $commandResult = $this->framework->run($params);
-        var_dump($commandResult);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'Phphleb\PsrAdapter\Psr11\Container';
 
@@ -61,7 +58,6 @@ class PsrTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/psr/controller/container/2';
         $commandResult = $this->framework->run($params);
-        var_dump($commandResult);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'true';
 
@@ -73,7 +69,6 @@ class PsrTest extends TestCase
         $params = $this->framework::DEFAULT_DATA;
         $params['SERVER']['REQUEST_URI'] = '/psr/controller/container/3';
         $commandResult = $this->framework->run($params);
-        var_dump($commandResult);
         $status = $this->framework->getStatus();
         $result = $status && $commandResult === 'true';
 
