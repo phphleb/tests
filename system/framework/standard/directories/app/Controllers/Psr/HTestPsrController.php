@@ -11,20 +11,6 @@ use Psr\Log\InvalidArgumentException;
 
 class HTestPsrController extends Controller
 {
-
-    public function __construct()
-    {
-        if (!class_exists(\Psr\Log\LoggerInterface::class, false)) {
-            require_once HLEB_VENDOR_DIR . '/psr/log/src/LoggerInterface.php';
-        }
-        if (!class_exists(\Psr\Container\ContainerInterface::class, false)) {
-            require_once HLEB_VENDOR_DIR . '/psr/container/src/ContainerInterface.php';
-        }
-        if (!class_exists(InvalidArgumentException::class, false)) {
-            require_once HLEB_VENDOR_DIR . '/psr/container/src/InvalidArgumentException.php';
-        }
-    }
-
     public function getLoggerV1(): string
     {
         $logger = Converter::toPsr3Logger();
