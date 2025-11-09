@@ -13,6 +13,7 @@ class HlTestConfigModuleController extends Module
         return match (Request::get('p')->value()) {
             'main' => Settings::getParam('main', 'replace.temp'),
             'custom' => Settings::getParam('custom', 'override.levels'),
+            'type' => Settings::getParam('custom', 'override.int') === 100 ? '1' : '0',
             'override' => Settings::getParam('main', 'override.var'),
             default => Settings::getParam('main', 'module.value'),
         };

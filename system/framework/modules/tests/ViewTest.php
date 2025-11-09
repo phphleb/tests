@@ -66,6 +66,18 @@ class ViewTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testModuleConfigV5(): void
+    {
+        $params = $this->framework::DEFAULT_DATA;
+        $params['SERVER']['REQUEST_URI'] = '/test-config?p=type';
+        $params['GET']['p'] = 'type';
+        $commandResult = $this->framework->run($params);
+        $status = $this->framework->getStatus();
+        $result = $status && $commandResult === '1';
+
+        $this->assertTrue($result);
+    }
+
     public function testModuleViewsV1(): void
     {
         $params = $this->framework::DEFAULT_DATA;
