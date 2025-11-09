@@ -11,6 +11,14 @@ use Psr\Log\InvalidArgumentException;
 
 class HTestPsrController extends Controller
 {
+
+    public function __construct()
+    {
+        if (file_exists(HLEB_VENDOR_DIR . '/autoload.php')) {
+            require_once HLEB_VENDOR_DIR . '/autoload.php';
+        }
+    }
+
     public function getLoggerV1(): string
     {
         $logger = Converter::toPsr3Logger();
