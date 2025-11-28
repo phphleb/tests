@@ -27,7 +27,7 @@ class StandardModuleInit
     public function run(array $params = [], array $config = [])
     {
         $params = array_merge(self::DEFAULT_DATA, $params);
-        $data = $this->getNormalizedJsonData($params);
+        $data = base64_encode($this->getNormalizedJsonData($params));
         $dir = __DIR__;
         ob_start();
         passthru("php $dir/{$this->initiator} $data", $resultCode);
@@ -45,7 +45,7 @@ class StandardModuleInit
 
     private function getNormalizedJsonData(array $list): string
     {
-        return str_replace('"', '\"', json_encode($list));
+        return json_encode($list);
     }
 
 }

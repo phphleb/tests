@@ -115,8 +115,8 @@ trait BaseInitTrait
         }
         $paramList or $paramList = [$this->getData()];
 
-        $data = $this->getNormalizedJsonData($paramList);
-        $configData = $this->getNormalizedJsonData($this->config);
+        $data = base64_encode($this->getNormalizedJsonData($paramList));
+        $configData = base64_encode($this->getNormalizedJsonData($this->config));
 
         $dir = __DIR__;
         ob_start();
@@ -168,6 +168,6 @@ trait BaseInitTrait
 
     protected function getNormalizedJsonData(array $list): string
     {
-        return str_replace('"', '\"', json_encode($list));
+        return json_encode($list);
     }
 }

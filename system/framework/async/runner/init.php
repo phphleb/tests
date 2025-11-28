@@ -14,8 +14,8 @@ try {
     defined('HLEB_VENDOR_DIR') or define('HLEB_VENDOR_DIR', __DIR__ . '/../../../../../../../vendor');
 
     $params = [];
-    $data = $argv[1] ?? null;
-    $config = $argv[2] ?? [];
+    $data = isset($argv[1]) ? base64_decode($argv[1]) : null;
+    $config = isset($argv[2]) ? base64_decode($argv[2]) : [];
 
     if ($data) {
         $params = json_decode($data, true);

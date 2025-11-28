@@ -107,8 +107,8 @@ class StandardInit
         $config = array_merge(self::DEFAULT_CONFIG, $config);
         /** @see SystemSettings::setData() */
         $config['default'] = $config['common'];
-        $data = $this->getNormalizedJsonData($params);
-        $configData = $this->getNormalizedJsonData($config);
+        $data = base64_encode($this->getNormalizedJsonData($params));
+        $configData = base64_encode($this->getNormalizedJsonData($config));
 
         $dir = __DIR__;
         ob_start();
@@ -127,7 +127,7 @@ class StandardInit
 
     private function getNormalizedJsonData(array $list): string
     {
-        return str_replace('"', '\"', json_encode($list));
+        return json_encode($list);
     }
 
 }
