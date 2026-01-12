@@ -537,4 +537,423 @@ class ArrayHelperTest extends TestCase
         $this->assertArrayEquals($result, $expected);
     }
 
+    public function testArrayHelperExceptV1(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York'
+        ];
+        $keys = ['age'];
+        $expected = [
+            'name' => 'John',
+            'city' => 'New York'
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV2(): void
+    {
+        $list = [
+            'id' => 1,
+            'name' => 'John',
+            'email' => 'john@example.com',
+            'phone' => '+1234567890',
+            'address' => '123 Main St'
+        ];
+        $keys = ['email', 'phone', 'address'];
+        $expected = [
+            'id' => 1,
+            'name' => 'John'
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV3(): void
+    {
+        $list = [
+            0 => 'apple',
+            1 => 'banana',
+            2 => 'orange',
+            3 => 'grape'
+        ];
+        $keys = [1, 3];
+        $expected = [
+            0 => 'apple',
+            1 => 'orange'
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV4(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York'
+        ];
+        $keys = 'age';
+        $expected = [
+            'name' => 'John',
+            'city' => 'New York'
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV5(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30
+        ];
+        $keys = ['email', 'phone', 'nonexistent'];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $list);
+    }
+
+    public function testArrayHelperExceptV6(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York'
+        ];
+        $keys = [];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $list);
+    }
+
+    public function testArrayHelperExceptV7(): void
+    {
+        $list = [];
+        $keys = ['name', 'age'];
+        $expected = [];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV8(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30
+        ];
+        $keys = ['name', 'age'];
+        $expected = [];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV9(): void
+    {
+        $list = [
+            '0' => 'zero',
+            '1' => 'one',
+            '2' => 'two',
+            '3' => 'three'
+        ];
+        $keys = ['1', '3'];
+        $expected = [
+            '0' => 'zero',
+            '2' => 'two'
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptV10(): void
+    {
+        $list = [
+            'user' => [
+                'name' => 'John',
+                'email' => 'john@example.com'
+            ],
+            'settings' => [
+                'theme' => 'dark'
+            ],
+            'meta' => [
+                'created' => '2026-01-01'
+            ]
+        ];
+        $keys = ['settings', 'meta'];
+        $expected = [
+            'user' => [
+                'name' => 'John',
+                'email' => 'john@example.com'
+            ]
+        ];
+
+        $result = ArrayHelper::except($list, $keys);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV1(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York',
+            'country' => 'USA'
+        ];
+        $values = ['John', 'USA'];
+        $expected = [
+            'name' => 'John',
+            'country' => 'USA'
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV2(): void
+    {
+        $list = ['apple', 'banana', 'orange', 'grape', 'kiwi'];
+        $values = ['banana', 'grape'];
+        $expected = [
+            0 => 'banana',
+            1 => 'grape'
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV3(): void
+    {
+        $list = [
+            0 => 'first',
+            1 => 'second',
+            2 => 'third',
+            3 => 'fourth',
+            4 => 'fifth'
+        ];
+        $values = ['second', 'fourth'];
+        $expected = [
+            0 => 'second',
+            1 => 'fourth'
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV4(): void
+    {
+        $list = [
+            'id' => 1,
+            'count' => '2',
+            'total' => 3,
+            'amount' => '4'
+        ];
+        $values = [1, 2, 3, 4];
+        $expected = [
+            'id' => 1,
+            'total' => 3
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values, true);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV5(): void
+    {
+        $list = [
+            'id' => 1,
+            'count' => '2',
+            'total' => 3,
+            'amount' => '4'
+        ];
+        $values = [1, 2, 3, 4];
+        $expected = [
+            'id' => 1,
+            'count' => '2',
+            'total' => 3,
+            'amount' => '4'
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values, false);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV6(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York'
+        ];
+        $values = [];
+        $expected = [];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV7(): void
+    {
+        $list = [];
+        $values = ['John', 'USA'];
+        $expected = [];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV8(): void
+    {
+        $list = [
+            'name' => 'John',
+            'age' => 30,
+            'city' => 'New York'
+        ];
+        $values = ['Alice', 'London', 25];
+        $expected = [];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV9(): void
+    {
+        $list = [
+            'first' => 'apple',
+            'second' => 'banana',
+            'third' => 'orange'
+        ];
+        $values = ['apple', 'banana', 'orange'];
+        $expected = [
+            'first' => 'apple',
+            'second' => 'banana',
+            'third' => 'orange'
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperOnlyValuesV10(): void
+    {
+        $list = [1, 2, '3', 4, '5', 6];
+        $values = [1, 3, 5];
+        $expected = [
+            0 => 1
+        ];
+
+        $result = ArrayHelper::onlyValues($list, $values, true);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV1(): void
+    {
+        $list = [1, 2, '3', 4, '5', 6];
+        $values = [1, 3, 5];
+        $expected = [2, 4, 6];
+
+        $result = ArrayHelper::exceptValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV2(): void
+    {
+        $list = [1, 2, '3', 4, '5', 6];
+        $values = [1, 3, 5];
+        $expected = [2, '3', 4, '5', 6];
+
+        $result = ArrayHelper::exceptValues($list, $values, true);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV3(): void
+    {
+        $array = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4];
+        $values = [2, 4];
+        $expected = ['a' => 1, 'c' => 3];
+
+        $result = ArrayHelper::exceptValues($array, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV4(): void
+    {
+        $array = ['a' => 1, 'b' => '2', 'c' => 3, 'd' => '4'];
+        $values = [2, 4];
+        $expected = ['a' => 1, 'b' => '2', 'c' => 3, 'd' => '4'];
+
+        $result = ArrayHelper::exceptValues($array, $values, true);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV5(): void
+    {
+        $list = [1, 2, 3];
+        $values = [];
+        $expected = [1, 2, 3];
+
+        $result = ArrayHelper::exceptValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV6(): void
+    {
+        $list = [1, 2, 3];
+        $values = [1, 2, 3];
+        $expected = [];
+
+        $result = ArrayHelper::exceptValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
+
+    public function testArrayHelperExceptValuesV7(): void
+    {
+        $list = [1, 2, 3, 4, 5];
+        $values = [2, 4];
+        $expected = [
+            0 => 1,
+            1 => 3,
+            2 => 5
+        ];
+
+        $result = ArrayHelper::exceptValues($list, $values);
+
+        $this->assertArrayEquals($result, $expected);
+    }
 }
