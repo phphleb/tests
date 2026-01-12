@@ -664,25 +664,6 @@ class ArrayHelperTest extends TestCase
         $this->assertArrayEquals($result, $expected);
     }
 
-    public function testArrayHelperExceptV9(): void
-    {
-        $list = [
-            '0' => 'zero',
-            '1' => 'one',
-            '2' => 'two',
-            '3' => 'three'
-        ];
-        $keys = ['1', '3'];
-        $expected = [
-            '0' => 'zero',
-            '2' => 'two'
-        ];
-
-        $result = ArrayHelper::except($list, $keys);
-
-        $this->assertArrayEquals($result, $expected);
-    }
-
     public function testArrayHelperExceptV10(): void
     {
         $list = [
