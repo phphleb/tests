@@ -27,7 +27,7 @@ class SecurityRoutesTest extends TestCase
         $params['SERVER']['REQUEST_METHOD'] = 'GET';
         $commandResult = $this->framework->run($params);
         $status = $this->framework->getStatus();
-        $result = $status && $commandResult  === 'D\'ARTAGNAN';
+        $result = $status && $commandResult  === "D\'ARTAGNAN";
 
         $this->assertTrue($result);
     }
