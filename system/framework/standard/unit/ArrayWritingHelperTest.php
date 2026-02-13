@@ -16,6 +16,7 @@ class ArrayWritingHelperTest extends TestCase
             'param2' => 15,
             'param3' => ['string_value', 10],
             'param4' => [],
+            'key\'1' => 'value\'1',
         ];
         $result = (new ArrayWriting())->getString($array, 4);
 
