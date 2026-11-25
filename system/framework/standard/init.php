@@ -32,7 +32,13 @@ try {
         }
         if (isset($params['SESSION']['PHP-SESSION-ID-TEST'])) {
             session_name('PHP-SESSION-ID-TEST');
+            // Register the fixture ID before strict mode validates it (enabled by default in PHP 8.6).
+            $useStrictMode = ini_get('session.use_strict_mode');
+            ini_set('session.use_strict_mode', '0');
             session_id($params['SESSION']['PHP-SESSION-ID-TEST']);
+            session_start();
+            session_write_close();
+            ini_set('session.use_strict_mode', $useStrictMode);
         }
         session_start();
         foreach ($params['SESSION'] ?? [] as $key => $value) {
